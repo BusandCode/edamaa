@@ -76,7 +76,7 @@ const StudentDashboard = () => {
                 />
               </div>
               <div className="min-w-0">
-                <h2 className="text-lg font-bold text-gray-800">Welcome, Chika</h2>
+                <h2 className="text-lg font-bold text-gray-800">Welcome, Andrew</h2>
                 <div className="flex items-center gap-2">
                   <p className="text-xs text-gray-600 truncate">I am here to learn, unlearn and relearn</p>
                   <FaEdit className="text-gray-400 text-xs cursor-pointer hover:text-[#3D08BA] shrink-0" />
