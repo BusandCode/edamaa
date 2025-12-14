@@ -1,8 +1,22 @@
 import { useState } from 'react';
-import { FaSearch, FaBars, FaCheckCircle, FaEdit, FaBell, FaChartLine, FaCalendarAlt, FaVideo, FaFolder, FaIdCard, FaCreditCard, FaQuestionCircle,FaUsers, FaFileAlt, FaCertificate, FaBook, FaFlag, FaInfoCircle, FaLanguage, FaEnvelope, FaShieldAlt, FaTimes } from 'react-icons/fa';
-import Logo from "../../components/Logo"
+import { FaSearch, FaBars, FaCheckCircle, FaEdit, FaBell, FaChartLine, FaCalendarAlt, FaVideo, FaFolder, FaIdCard, FaCreditCard, FaQuestionCircle, FaUsers, FaFileAlt, FaCertificate, FaBook, FaFlag, FaInfoCircle, FaLanguage, FaEnvelope, FaShieldAlt, FaTimes, FaCamera } from 'react-icons/fa';
+import Logo from "../../components/Logo";
+import SubscriptionStatus from "../../components/SubscriptionStatus";
+
 const SchoolDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState<string>('');
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className='min-h-screen bg-gray-50'>
@@ -11,9 +25,10 @@ const SchoolDashboard = () => {
         <div className='max-w-7xl mx-auto px-4 py-4'>
           <div className='flex items-center justify-between gap-3'>
             {/* Logo */}
-           <div className='mb-4'>
-            <Logo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
-          </div>
+            <div className='shrink-0'>
+              <Logo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
+            </div>
+            
             {/* Search Bar */}
             <div className='flex-1 min-w-0'>
               <div className='relative'>
@@ -44,13 +59,30 @@ const SchoolDashboard = () => {
           <div className='flex items-start gap-4 mb-5'>
             <div className='relative shrink-0'>
               <div className='w-16 h-16 rounded-full overflow-hidden bg-linear-to-br from-purple-400 to-purple-600'>
-                <img 
-                  src='https://api.dicebear.com/7.x/avataaars/svg?seed=school' 
-                  alt='School Profile' 
-                  className='w-full h-full object-cover'
-                />
+                {profileImage ? (
+                  <img 
+                    src={profileImage} 
+                    alt='School Profile' 
+                    className='w-full h-full object-cover'
+                  />
+                ) : (
+                  <div className='w-full h-full flex items-center justify-center text-white text-2xl font-bold'>
+                    GS
+                  </div>
+                )}
               </div>
               <div className='absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white'></div>
+              
+              {/* Camera Icon for Upload */}
+              <label className='absolute -bottom-1 -right-1 w-6 h-6 bg-[#3D08BA] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#5010E0] transition-colors'>
+                <FaCamera className='text-white text-xs' />
+                <input 
+                  type='file' 
+                  accept='image/*' 
+                  onChange={handleImageChange}
+                  className='hidden'
+                />
+              </label>
             </div>
             
             <div className='flex-1 min-w-0'>
@@ -82,13 +114,7 @@ const SchoolDashboard = () => {
             </div>
             
             {/* Subscription Status */}
-            <div className='bg-white rounded-xl p-4 flex items-center justify-between flex-wrap gap-3'>
-              <span className='text-gray-900 font-medium text-sm sm:text-base'>Subscription Status</span>
-              <div className='flex gap-2'>
-                <span className='px-3 sm:px-4 py-1 bg-green-500 text-white rounded-full text-xs sm:text-sm font-medium'>Active</span>
-                <span className='px-3 sm:px-4 py-1 bg-red-500 text-white rounded-full text-xs sm:text-sm font-medium'>Expired</span>
-              </div>
-            </div>
+            <SubscriptionStatus isActive={true} showBoth={true} />
           </div>
         </div>
 

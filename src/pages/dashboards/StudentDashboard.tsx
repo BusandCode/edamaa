@@ -9,7 +9,7 @@ const StudentDashboard = () => {
     {
       id: 1,
       title: 'Introduction to Financial Accounting',
-      instructor: 'Prof. Johnson',
+      instructor: 'Prof Olamide Sobowale',
       duration: '1h 30m',
       date: 'May 20, 2024',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class1&backgroundColor=3D08BA'
@@ -17,7 +17,7 @@ const StudentDashboard = () => {
     {
       id: 2,
       title: 'Advanced Mathematics - Calculus',
-      instructor: 'Dr. Smith',
+      instructor: 'Prof Adetokunbo Andrew',
       duration: '2h 15m',
       date: 'May 18, 2024',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class2&backgroundColor=F68C29'
@@ -25,7 +25,7 @@ const StudentDashboard = () => {
     {
       id: 3,
       title: 'Physics - Quantum Mechanics',
-      instructor: 'Prof. Anderson',
+      instructor: 'Prof Bukunmi',
       duration: '1h 45m',
       date: 'May 15, 2024',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class3&backgroundColor=3D08BA'
