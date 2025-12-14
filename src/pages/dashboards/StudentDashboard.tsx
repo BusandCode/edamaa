@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaChartPie, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaGlobe, FaEdit } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('EN');
+  // const [selectedLanguage, setSelectedLanguage] = useState('EN');
 
   const recordedClasses = [
     {
@@ -117,7 +117,7 @@ const StudentDashboard = () => {
             <div>
               <p className="text-white text-sm mb-1">15 of 30 Syllabus covered</p>
               <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
-                <div className="bg-gradient-to-r from-[#F68C29] to-yellow-400 h-2 rounded-full" style={{width: '50%'}}></div>
+                <div className="bg-linear-to-r from-[#F68C29] to-yellow-400 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
             <span className="text-white font-bold text-xl">30%</span>
@@ -210,7 +210,7 @@ const StudentDashboard = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               >
                 {/* Thumbnail */}
-                <div className="relative h-40 bg-gradient-to-br from-[#3D08BA] to-[#5a2dd4] overflow-hidden">
+                <div className="relative h-40 bg-linear-to-br from-[#3D08BA] to-[#5a2dd4] overflow-hidden">
                   <img 
                     src={classItem.thumbnail}
                     alt={classItem.title}

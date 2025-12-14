@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaPhone, FaChartBar, FaUser, FaPlus, FaClock, FaCalendar, FaShare, FaCopy, FaVideo } from 'react-icons/fa';
 
 const TutorDashboard = () => {
@@ -88,7 +88,7 @@ const TutorDashboard = () => {
             </div>
 
             {/* Share Classroom ID */}
-            <div className="bg-gradient-to-r from-[#F68C29] to-[#ffa94d] px-4 py-2 rounded-lg">
+            <div className="bg-linear-to-r from-[#F68C29] to-[#ffa94d] px-4 py-2 rounded-lg">
               <p className="text-xs text-white">Share Classroom ID</p>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-sm font-bold text-white">ID: {classroomId}</span>
@@ -187,7 +187,7 @@ const TutorDashboard = () => {
             {upcomingClasses.map((classItem) => (
               <div
                 key={classItem.id}
-                className="bg-gradient-to-br from-[#F68C29] to-[#ffa94d] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-linear-to-br from-[#F68C29] to-[#ffa94d] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
                 {/* Student Avatars and Date */}
                 <div className="flex items-center justify-between mb-4">
@@ -259,7 +259,7 @@ const TutorDashboard = () => {
               <FaUser className="text-2xl" />
               <span className="text-xs">Profile</span>
             </button>
-            <button className="w-14 h-14 bg-gradient-to-r from-[#F68C29] to-[#ffa94d] rounded-full flex items-center justify-center -mt-6 shadow-lg hover:shadow-xl transition-shadow">
+            <button className="w-14 h-14 bg-linear-to-r from-[#F68C29] to-[#ffa94d] rounded-full flex items-center justify-center -mt-6 shadow-lg hover:shadow-xl transition-shadow">
               <FaPlus className="text-white text-2xl" />
             </button>
           </div>
