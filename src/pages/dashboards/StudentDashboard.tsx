@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
-import { IoMdCamera } from 'react-icons/io';
+import { FaSearch, FaBell, FaBook, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
+// import { IoMdCamera } from 'react-icons/io';
 import Logo from "../../components/Logo";
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 
@@ -170,7 +170,7 @@ const StudentDashboard = () => {
                         border rounded
                         focus:outline-none focus:border-[#3D08BA]
                         text-base sm:text-lg font-bold
-                        w-full max-w-[200px]
+                        w-full max-w-50
                       "
                     />
                   )}
