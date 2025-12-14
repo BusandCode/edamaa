@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaChartPie, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaGlobe, FaEdit } from 'react-icons/fa';
-
+import Logo from "../../components/Logo";
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   // const [selectedLanguage, setSelectedLanguage] = useState('EN');
@@ -39,13 +39,9 @@ const StudentDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between mb-3">
             {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#3D08BA] rounded-full flex items-center justify-center">
-                <FaGlobe className="text-white text-xl" />
-              </div>
-              <span className="font-bold text-xl">
-                Edamaa <span className="text-[#3D08BA]">3D</span>
-              </span>
+            {/* Logo */}
+            <div className='shrink-0'>
+              <Logo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
             </div>
 
             {/* Right Section */}
