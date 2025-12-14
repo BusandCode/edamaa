@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
+import { IoMdCamera } from 'react-icons/io';
 import Logo from "../../components/Logo";
+import SubscriptionStatus from "../../components/SubscriptionStatus";
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  // editable profile
+  const [profileSrc, setProfileSrc] = useState<string | null>(null);
+  const profileInputRef = useRef<HTMLInputElement | null>(null);
+  const [name, setName] = useState<string>('Andrew');
+  const [isEditingName, setIsEditingName] = useState<boolean>(false);
 
   const recordedClasses = [
     {
@@ -68,19 +75,111 @@ const StudentDashboard = () => {
           {/* Welcome Section */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full border-4 border-[#F68C29] overflow-hidden bg-white shrink-0">
-                <img 
-                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=student" 
-                  alt="Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="min-w-0">
-                <h2 className="text-lg font-bold text-gray-800">Welcome, Andrew</h2>
-                <div className="flex items-center gap-2">
-                  <p className="text-xs text-gray-600 truncate">I am here to learn, unlearn and relearn</p>
-                  <FaEdit className="text-gray-400 text-xs cursor-pointer hover:text-[#3D08BA] shrink-0" />
+              <div className="relative">
+                {/* Profile Avatar */}
+              <div className="flex items-center gap-3">
+                <div className="relative shrink-0">
+                  <button
+                    type="button"
+                    aria-label="Change profile picture"
+                    title="Click to change profile picture"
+                    onClick={() => profileInputRef.current?.click()}
+                    className="
+                      group
+                      relative
+                      w-14 h-14 sm:w-16 sm:h-16
+                      rounded-full
+                      border-4 border-[#F68C29]
+                      overflow-hidden
+                      bg-white
+                      flex items-center justify-center
+                      focus:outline-none
+                      focus:ring-2 focus:ring-[#3D08BA]
+                      transition
+                    "
+                  >
+                    <img
+                      src={
+                        profileSrc
+                          ? profileSrc
+                          : "https://api.dicebear.com/7.x/avataaars/svg?seed=student"
+                      }
+                      alt="Profile picture"
+                      className="w-full h-full object-cover"
+                    />
+
+                    {/* Hover Overlay */}
+                    <div className="
+                      absolute inset-0
+                      bg-black/40
+                      flex items-center justify-center
+                      text-white text-[10px] sm:text-xs font-medium
+                      opacity-0 group-hover:opacity-100
+                      transition-opacity
+                    ">
+                      Change Photo
+                    </div>
+                  </button>
+
+                  {/* Hidden File Input */}
+                  <input
+                    ref={profileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+
+                      const reader = new FileReader();
+                      reader.onload = (ev) => setProfileSrc(String(ev.target?.result));
+                      reader.readAsDataURL(file);
+                    }}
+                  />
                 </div>
+
+                {/* Welcome + Name */}
+                <div className="min-w-0">
+                  {!isEditingName ? (
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-base sm:text-lg font-bold text-gray-800 truncate">
+                        Welcome, {name}
+                      </h2>
+                      <button
+                        aria-label="Edit name"
+                        onClick={() => setIsEditingName(true)}
+                        className="p-1 rounded hover:bg-gray-100"
+                      >
+                        <FaEdit className="text-gray-400 text-sm" />
+                      </button>
+                    </div>
+                  ) : (
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      onBlur={() => setIsEditingName(false)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          (e.target as HTMLInputElement).blur();
+                        }
+                      }}
+                      autoFocus
+                      className="
+                        px-2 py-1
+                        border rounded
+                        focus:outline-none focus:border-[#3D08BA]
+                        text-base sm:text-lg font-bold
+                        w-full max-w-[200px]
+                      "
+                    />
+                  )}
+
+                  <p className="text-xs sm:text-sm text-gray-600 truncate">
+                    I am here to learn, unlearn and relearn
+                  </p>
+                </div>
+              </div>
               </div>
             </div>
 
@@ -96,33 +195,19 @@ const StudentDashboard = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-4">
         {/* Progress Card */}
-        <div className="bg-[#3D08BA] rounded-2xl p-5 mb-6 shadow-lg">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex-1">
-              <p className="text-white text-sm mb-1">15 of 30 Syllabus covered</p>
-              <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
-                <div className="bg-linear-to-r from-[#F68C29] to-yellow-400 h-2 rounded-full" style={{width: '50%'}}></div>
-              </div>
+         {/* Earnings Overview Card */}
+          <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white'>
+            <div className='flex items-center justify-between mb-4'>
+              <h3 className='text-base sm:text-lg font-semibold'>Earnings Overview</h3>
+              <span className='text-sm font-medium'>30%</span>
             </div>
-            <span className="text-white font-bold text-xl ml-4">30%</span>
+            <div className='relative h-3 bg-white/20 rounded-full overflow-hidden mb-5'>
+              <div className='absolute inset-y-0 left-0 w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
+            </div>
+            
+            {/* Subscription Status */}
+            <SubscriptionStatus isActive={true} showBoth={true} />
           </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-3 gap-3">
-            <button className="flex flex-col items-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-3 hover:bg-opacity-20 transition-all">
-              <FaBook className="text-white text-2xl" />
-              <span className="text-white text-xs text-center">Upcoming class</span>
-            </button>
-            <button className="flex flex-col items-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-3 hover:bg-opacity-20 transition-all">
-              <FaClock className="text-white text-2xl" />
-              <span className="text-white text-xs text-center">Remaining class days</span>
-            </button>
-            <button className="flex flex-col items-center gap-2 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-3 hover:bg-opacity-20 transition-all">
-              <FaClipboardList className="text-white text-2xl" />
-              <span className="text-white text-xs text-center">Marked test/Quiz</span>
-            </button>
-          </div>
-        </div>
 
         {/* Quick Access Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">

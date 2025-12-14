@@ -1,10 +1,18 @@
-import { useState } from 'react';
-import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaPhone, FaChartBar, FaUser, FaPlus, FaClock, FaCalendar, FaShare, FaCopy, FaVideo } from 'react-icons/fa';
+import { useState, useRef } from 'react';
+import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaPhone, FaChartBar, FaUser, FaPlus, FaClock, FaCalendar, FaShare, FaCopy, FaVideo, FaEdit } from 'react-icons/fa';
+import { IoMdCamera } from 'react-icons/io';
 import Logo from "../../components/Logo";
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
   const [showShareModal, setShowShareModal] = useState(false);
+
+  // Profile image and editable name
+  const [profileSrc, setProfileSrc] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [name, setName] = useState<string>('Abdulrahman Farhan');
+  const [isEditingName, setIsEditingName] = useState<boolean>(false);
+  const [showMobileSearch, setShowMobileSearch] = useState<boolean>(false);
 
   const upcomingClasses = [
     {
@@ -56,6 +64,15 @@ const TutorDashboard = () => {
               </div>
             </div>
 
+            {/* Mobile Search button */}
+            <button
+              onClick={() => setShowMobileSearch((s) => !s)}
+              className="md:hidden p-2 rounded-full hover:bg-gray-100"
+              aria-label="Search"
+            >
+              <FaSearch className="text-gray-600 text-lg" />
+            </button>
+
             {/* Notification and Settings */}
             <div className="flex items-center gap-3">
               <button className="relative p-2 hover:bg-gray-100 rounded-full">
@@ -68,19 +85,84 @@ const TutorDashboard = () => {
             </div>
           </div>
 
-          {/* Welcome Section */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-             <div className='w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gray-200 overflow-hidden'>
-              <div className='w-full h-full flex items-center justify-center'>
-                <svg className='w-20 h-20 text-gray-400' fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
+          {/* Mobile search overlay */}
+          {showMobileSearch && (
+            <div className="md:hidden absolute left-0 right-0 top-full bg-white px-4 py-3 border-t shadow">
+              <div className="relative max-w-7xl mx-auto">
+                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search course, tutorial....."
+                  className="w-full pl-10 pr-12 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#3D08BA]"
+                />
+                <button onClick={() => setShowMobileSearch(false)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" aria-label="Close search">✕</button>
               </div>
             </div>
+          )}
+
+          {/* Welcome Section */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div className='w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center'>
+                  {profileSrc ? (
+                    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                    <img src={profileSrc} alt="Profile" className="w-full h-full object-cover" />
+                  ) : (
+                    <svg className='w-20 h-20 text-gray-400' fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  )}
+                </div>
+
+                {/* Camera button overlay */}
+                <label className='absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-full border-2 border-gray-300 flex items-center justify-center cursor-pointer hover:bg-gray-50' aria-label="Change profile picture">
+                  <IoMdCamera size={18} className='text-gray-600' />
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    className='hidden'
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (ev) => setProfileSrc(String(ev.target?.result));
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                </label>
+              </div>
+
               <div>
                 <p className="text-sm text-gray-600">Welcome</p>
-                <h2 className="text-xl font-bold text-gray-800">Abdulrahman Farhan ✏️</h2>
+                <div className="flex items-center gap-2">
+                  {!isEditingName ? (
+                    <>
+                      <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                        {name}
+                      </h2>
+                      <button
+                        aria-label="Edit name"
+                        onClick={() => setIsEditingName(true)}
+                        className="p-1 rounded hover:bg-gray-100"
+                      >
+                        <FaEdit className="text-gray-500" />
+                      </button>
+                    </>
+                  ) : (
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      onBlur={() => setIsEditingName(false)}
+                      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); }}
+                      autoFocus
+                      className="px-2 py-1 border rounded focus:outline-none focus:border-[#3D08BA]"
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
@@ -102,7 +184,7 @@ const TutorDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="max-w-7xl mx-auto px-4 py-6 pb-28">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
@@ -226,7 +308,7 @@ const TutorDashboard = () => {
                     <FaClock className="text-gray-700" />
                     <span className="text-gray-800 font-medium">{classItem.time}</span>
                   </div>
-                  <button className="bg-white text-gray-800 px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+                  <button className="bg-white text-gray-800 px-6 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all w-full md:w-auto">
                     Start Class
                   </button>
                 </div>
