@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaChartPie, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit } from 'react-icons/fa';
+import { FaSearch, FaBell, FaBook, FaClock, FaClipboardList, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
 import Logo from "../../components/Logo";
+
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  // const [selectedLanguage, setSelectedLanguage] = useState('EN');
 
   const recordedClasses = [
     {
@@ -36,67 +36,56 @@ const StudentDashboard = () => {
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
       <div className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between mb-3">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          {/* Logo, Search and Menu on same line */}
+          <div className="flex items-center justify-between gap-3 mb-3">
             {/* Logo */}
             <div className='shrink-0'>
               <Logo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
             </div>
 
-            {/* Right Section */}
-            <div className="flex items-center gap-3">
-              {/* Language Selector */}
-              <button className="flex items-center gap-2 px-3 py-1 border border-gray-300 rounded-full text-sm">
-                <span className="text-2xl">🇬🇧</span>
-                <span className="text-xs text-gray-600">Select Language</span>
-              </button>
-
-              {/* Back Button */}
-              <button className="px-4 py-2 bg-black text-white text-xs rounded-full hover:bg-gray-800 transition-colors">
-                BACK
-              </button>
-
-              {/* Menu Button */}
-              <button 
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 hover:bg-gray-100 rounded-lg"
-              >
-                <FaBars className="text-gray-700 text-xl" />
-              </button>
+            {/* Search Bar */}
+            <div className="flex-1 min-w-0">
+              <div className="relative">
+                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={14} />
+                <input
+                  type="text"
+                  placeholder="Search course, tutorial..."
+                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#3D08BA] text-sm"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Search Bar */}
-          <div className="relative mb-3">
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search course, tutorial..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#3D08BA]"
-            />
+            {/* Menu Button */}
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="p-2 hover:bg-gray-100 rounded-lg shrink-0"
+            >
+              <FaBars className="text-gray-700 text-xl" />
+            </button>
           </div>
 
           {/* Welcome Section */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full border-4 border-[#F68C29] overflow-hidden bg-white">
+              <div className="w-14 h-14 rounded-full border-4 border-[#F68C29] overflow-hidden bg-white shrink-0">
                 <img 
                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=student" 
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h2 className="text-lg font-bold text-gray-800">Welcome, Chika</h2>
                 <div className="flex items-center gap-2">
-                  <p className="text-xs text-gray-600">I am here to learn, unlearn and relearn</p>
-                  <FaEdit className="text-gray-400 text-xs cursor-pointer hover:text-[#3D08BA]" />
+                  <p className="text-xs text-gray-600 truncate">I am here to learn, unlearn and relearn</p>
+                  <FaEdit className="text-gray-400 text-xs cursor-pointer hover:text-[#3D08BA] shrink-0" />
                 </div>
               </div>
             </div>
 
             {/* Notification Bell */}
-            <button className="relative p-2 hover:bg-gray-100 rounded-full">
+            <button className="relative p-2 hover:bg-gray-100 rounded-full shrink-0">
               <FaBell className="text-[#3D08BA] text-2xl" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
@@ -109,13 +98,13 @@ const StudentDashboard = () => {
         {/* Progress Card */}
         <div className="bg-[#3D08BA] rounded-2xl p-5 mb-6 shadow-lg">
           <div className="flex items-center justify-between mb-3">
-            <div>
+            <div className="flex-1">
               <p className="text-white text-sm mb-1">15 of 30 Syllabus covered</p>
               <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
                 <div className="bg-linear-to-r from-[#F68C29] to-yellow-400 h-2 rounded-full" style={{width: '50%'}}></div>
               </div>
             </div>
-            <span className="text-white font-bold text-xl">30%</span>
+            <span className="text-white font-bold text-xl ml-4">30%</span>
           </div>
 
           {/* Action Buttons */}
@@ -136,55 +125,54 @@ const StudentDashboard = () => {
         </div>
 
         {/* Quick Access Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
           {/* My Subjects */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center">
               <FaBook className="text-white text-2xl" />
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">My Subjects</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">My Subjects</span>
           </button>
 
           {/* Assignments */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-white border-4 border-gray-800 rounded-full flex items-center justify-center relative">
-              <div className="absolute inset-0 border-4 border-transparent border-t-gray-800 rounded-full animate-spin"></div>
-              <FaClock className="text-gray-800 text-2xl" />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-green-500 to-green-700 rounded-2xl flex items-center justify-center">
+              <FaTasks className="text-white text-2xl" />
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">Assignments</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">Assignments</span>
           </button>
 
           {/* Join Class */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center relative">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center relative">
               <FaVideo className="text-white text-2xl" />
               <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full font-bold">LIVE</span>
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">Join Class</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">Join Class</span>
           </button>
 
           {/* Performance Report */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center">
-              <FaChartPie className="text-white text-2xl" />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center">
+              <FaChartLine className="text-white text-2xl" />
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">Performance Report</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">Performance Report</span>
           </button>
 
           {/* Resource Library */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-orange-500 to-orange-700 rounded-2xl flex items-center justify-center">
               <FaFileAlt className="text-white text-2xl" />
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">Resource Library</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">Resource Library</span>
           </button>
 
           {/* Payment & Subscriptions */}
           <button className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-3">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center border-4 border-gray-300">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-br from-yellow-500 to-yellow-700 rounded-2xl flex items-center justify-center">
               <FaDollarSign className="text-white text-2xl" />
             </div>
-            <span className="text-sm font-semibold text-gray-800 text-center">Payment & Subscriptions</span>
+            <span className="text-xs sm:text-sm font-semibold text-gray-800 text-center">Payment & Subscriptions</span>
           </button>
         </div>
 
