@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaPhone, FaChartBar, FaUser, FaPlus, FaClock, FaCalendar, FaShare, FaCopy, FaVideo } from 'react-icons/fa';
+import Logo from "../../components/Logo";
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
@@ -38,13 +39,9 @@ const TutorDashboard = () => {
         <div className="max-w-7xl mx-auto px-4 py-4">
           {/* Logo and Search */}
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#3D08BA] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">E</span>
-              </div>
-              <span className="font-bold text-xl">
-                Edamaa <span className="text-[#F68C29]">3D</span>
-              </span>
+            {/* Logo */}
+            <div className='shrink-0'>
+              <Logo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
             </div>
             
             {/* Search Bar */}
