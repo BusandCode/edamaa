@@ -9,9 +9,13 @@ import SignUp from './pages/SignUp.tsx'
 import SignIn from './pages/SignIn.tsx'
 import SchoolRegistration from './pages/SchoolRegistration.tsx'
 import TutorRegistration from './pages/TutorRegistration.tsx'
-// import Dashboard from './pages/Dashboard.tsx'
 import PasswordRecovery from './pages/PasswordRecovery.tsx'
 import StudentRegistration from './pages/StudentRegistration.tsx'
+
+// Import Dashboard components
+import SchoolDashboard from './pages/dashboards/SchoolDashboard.tsx'
+import TutorDashboard from './pages/dashboards/TutorDashboard.tsx'
+import StudentDashboard from './pages/dashboards/StudentDashboard.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,7 +25,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />
         
         {/* Authentication Routes */}
-        {/* <Route path="/welcome-page" element={<WelcomePage />} /> */}
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/password-recovery" element={<PasswordRecovery />} />
@@ -31,8 +34,10 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/tutor-registration" element={<TutorRegistration />} />
         <Route path="/student-registration" element={<StudentRegistration />} />
         
-        {/* Dashboard Route */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        {/* Dashboard Routes */}
+        <Route path="/school-dashboard" element={<SchoolDashboard />} />
+        <Route path="/tutor-dashboard" element={<TutorDashboard />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
       </Routes>
     </Router>
   </StrictMode>,

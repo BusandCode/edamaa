@@ -20,7 +20,7 @@ const Logo = ({
           alt="Logo"
           width={logoWidth}
           height={logoHeight}
-          className="w-auto h-auto max-w-[150px] sm:max-w-[213px]"
+          className="max-w-37.5"
         />
         <h1 className={`text-[#3D08BA] ${textSize} font-medium whitespace-nowrap`}>
           Edamaa <span className={`text-[#F68C29] font-semibold ${textSize}`}>3D</span>
