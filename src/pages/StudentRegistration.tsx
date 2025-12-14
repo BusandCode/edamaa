@@ -7,11 +7,25 @@ const StudentRegistration: React.FC = () => {
   const navigate = useNavigate();
 
   // To work on this later
-  async function onSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
-    event.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted');
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+  event.preventDefault();
+  
+  // Add your form validation logic here
+  const formData = new FormData(event.currentTarget);
+  
+  // Example validation - check if terms are agreed
+  const agreedToTerms = formData.get('agreedToTerms');
+  if (!agreedToTerms) {
+    alert('Please agree to the terms and conditions');
+    return;
   }
+  
+  // Add your form submission logic here (API call, etc.)
+  console.log('Student registration form submitted');
+  
+  // Navigate to School Dashboard
+  navigate('/student-dashboard');
+}
 
   const handleBack = (): void => {
     navigate(-1);
@@ -58,7 +72,7 @@ const StudentRegistration: React.FC = () => {
           </div>
 
           {/* Registration Form */}
-          <form onSubmit={onSubmit} className='w-full max-w-md space-y-4'>
+          <form onSubmit={handleSubmit} className='w-full max-w-md space-y-4'>
             <input
               type="text"
               name="fullName"

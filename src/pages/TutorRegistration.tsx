@@ -11,11 +11,25 @@ const TutorRegistration: React.FC = () => {
     navigate(-1);
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    // Add your form submission logic here
+    
+    // Add your form validation logic here
+    const formData = new FormData(event.currentTarget);
+    
+    // Example validation - check if terms are agreed
+    const agreedToTerms = formData.get('agreedToTerms');
+    if (!agreedToTerms) {
+      alert('Please agree to the terms and conditions');
+      return;
+    }
+    
     console.log('Tutor registration form submitted');
+    
+    // Navigate to School Dashboard
+    navigate('/tutor-dashboard');
   }
+  
 
   return (
     <div className='fixed inset-0 w-full h-full overflow-y-auto bg-white'>

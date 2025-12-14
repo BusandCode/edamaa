@@ -14,17 +14,15 @@ const SchoolRegistration: React.FC = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
   event.preventDefault();
   
-  // Add your form validation logic here
+
   const formData = new FormData(event.currentTarget);
   
-  // Example validation - check if terms are agreed
   const agreedToTerms = formData.get('agreedToTerms');
   if (!agreedToTerms) {
     alert('Please agree to the terms and conditions');
     return;
   }
   
-  // Add your form submission logic here (API call, etc.)
   console.log('School registration form submitted');
   
   // Navigate to School Dashboard
