@@ -22,7 +22,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Introduction to Financial Accounting',
       instructor: 'Prof Olamide Sobowale',
       duration: '1h 30m',
-      date: 'May 20, 2024',
+      date: 'Dec 12, 2025',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class1&backgroundColor=3D08BA'
     },
     {
@@ -30,7 +30,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Advanced Mathematics - Calculus',
       instructor: 'Prof Adetokunbo Andrew',
       duration: '2h 15m',
-      date: 'May 18, 2024',
+      date: 'Dec 18, 2025',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class2&backgroundColor=F68C29'
     },
     {
@@ -38,7 +38,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Physics - Quantum Mechanics',
       instructor: 'Prof Bukunmi',
       duration: '1h 45m',
-      date: 'May 15, 2024',
+      date: 'May 15, 2025',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class3&backgroundColor=3D08BA'
     },
     {
@@ -46,7 +46,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Business Management Fundamentals',
       instructor: 'Prof Chinwe Okafor',
       duration: '2h 00m',
-      date: 'May 17, 2024',
+      date: 'Jan 17, 2025',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class4&backgroundColor=16A34A'
     },
     {
@@ -54,7 +54,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Introduction to Computer Science',
       instructor: 'Prof Tunde Adeyemi',
       duration: '1h 55m',
-      date: 'May 16, 2024',
+      date: 'May 16, 2020',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class5&backgroundColor=DC2626'
     },
     {
@@ -62,7 +62,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'English Literature - Shakespeare',
       instructor: 'Prof Amaka Nwosu',
       duration: '1h 40m',
-      date: 'May 14, 2024',
+      date: 'April 14, 2019',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class6&backgroundColor=7C3AED'
     },
     {
@@ -70,7 +70,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Chemistry - Organic Compounds',
       instructor: 'Prof Ibrahim Yusuf',
       duration: '2h 10m',
-      date: 'May 13, 2024',
+      date: 'Sep 13, 2023',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class7&backgroundColor=EA580C'
     },
     {
@@ -78,7 +78,7 @@ const RecordClasses = ({ onClassClick }: RecordClassesProps) => {
       title: 'Economics - Macro & Microeconomics',
       instructor: 'Prof Ngozi Eze',
       duration: '1h 50m',
-      date: 'May 12, 2024',
+      date: 'Oct 12, 2025',
       thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class8&backgroundColor=0891B2'
     }
   ];
