@@ -1,43 +1,16 @@
 import { useState, useRef } from 'react';
 import { FaSearch, FaBell, FaBook, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
-// import { IoMdCamera } from 'react-icons/io';
 import Logo from "../../components/Logo";
 import SubscriptionStatus from "../../components/SubscriptionStatus";
+import RecordClasses from "../../components/RecordClasses";
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  // editable profile
   const [profileSrc, setProfileSrc] = useState<string | null>(null);
   const profileInputRef = useRef<HTMLInputElement | null>(null);
-  const [name, setName] = useState<string>('Andrew');
-  const [isEditingName, setIsEditingName] = useState<boolean>(false);
-
-  const recordedClasses = [
-    {
-      id: 1,
-      title: 'Introduction to Financial Accounting',
-      instructor: 'Prof Olamide Sobowale',
-      duration: '1h 30m',
-      date: 'May 20, 2024',
-      thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class1&backgroundColor=3D08BA'
-    },
-    {
-      id: 2,
-      title: 'Advanced Mathematics - Calculus',
-      instructor: 'Prof Adetokunbo Andrew',
-      duration: '2h 15m',
-      date: 'May 18, 2024',
-      thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class2&backgroundColor=F68C29'
-    },
-    {
-      id: 3,
-      title: 'Physics - Quantum Mechanics',
-      instructor: 'Prof Bukunmi',
-      duration: '1h 45m',
-      date: 'May 15, 2024',
-      thumbnail: 'https://api.dicebear.com/7.x/shapes/svg?seed=class3&backgroundColor=3D08BA'
-    }
-  ];
+  const [name] = useState<string>('Andrew');
+  const [description, setDescription] = useState<string>('I am here to learn, unlearn and relearn');
+  const [isEditingDescription, setIsEditingDescription] = useState<boolean>(false);
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
@@ -140,44 +113,47 @@ const StudentDashboard = () => {
 
                 {/* Welcome + Name */}
                 <div className="min-w-0">
-                  {!isEditingName ? (
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-base sm:text-lg font-bold text-gray-800 truncate">
-                        Welcome, {name}
-                      </h2>
-                      <button
-                        aria-label="Edit name"
-                        onClick={() => setIsEditingName(true)}
-                        className="p-1 rounded hover:bg-gray-100"
-                      >
-                        <FaEdit className="text-gray-400 text-sm" />
-                      </button>
-                    </div>
-                  ) : (
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      onBlur={() => setIsEditingName(false)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          (e.target as HTMLInputElement).blur();
-                        }
-                      }}
-                      autoFocus
-                      className="
-                        px-2 py-1
-                        border rounded
-                        focus:outline-none focus:border-[#3D08BA]
-                        text-base sm:text-lg font-bold
-                        w-full max-w-50
-                      "
-                    />
-                  )}
+                  <h2 className="text-base sm:text-lg font-bold text-gray-800 truncate">
+                    Welcome, {name}
+                  </h2>
 
-                  <p className="text-xs sm:text-sm text-gray-600 truncate">
-                    I am here to learn, unlearn and relearn
-                  </p>
+                  {/* Editable Description */}
+                  <div className="flex items-center gap-2">
+                    {!isEditingDescription ? (
+                      <>
+                        <p className="text-xs sm:text-sm text-gray-600 truncate">
+                          {description}
+                        </p>
+                        <button
+                          aria-label="Edit description"
+                          onClick={() => setIsEditingDescription(true)}
+                          className="p-1 rounded hover:bg-gray-100 shrink-0"
+                        >
+                          <FaEdit className="text-gray-400 text-xs" />
+                        </button>
+                      </>
+                    ) : (
+                      <input
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        onBlur={() => setIsEditingDescription(false)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            (e.target as HTMLInputElement).blur();
+                          }
+                        }}
+                        autoFocus
+                        className="
+                          px-2 py-1
+                          border rounded
+                          focus:outline-none focus:border-[#3D08BA]
+                          text-xs sm:text-sm
+                          w-full
+                        "
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
               </div>
@@ -194,20 +170,19 @@ const StudentDashboard = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-4">
-        {/* Progress Card */}
-         {/* Earnings Overview Card */}
-          <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white'>
-            <div className='flex items-center justify-between mb-4'>
-              <h3 className='text-base sm:text-lg font-semibold'>Earnings Overview</h3>
-              <span className='text-sm font-medium'>30%</span>
-            </div>
-            <div className='relative h-3 bg-white/20 rounded-full overflow-hidden mb-5'>
-              <div className='absolute inset-y-0 left-0 w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
-            </div>
-            
-            {/* Subscription Status */}
-            <SubscriptionStatus isActive={true} showBoth={true} />
+        {/* Earnings Overview Card */}
+        <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white mb-6'>
+          <div className='flex items-center justify-between mb-4'>
+            <h3 className='text-base sm:text-lg font-semibold'>Earnings Overview</h3>
+            <span className='text-sm font-medium'>30%</span>
           </div>
+          <div className='relative h-3 bg-white/20 rounded-full overflow-hidden mb-5'>
+            <div className='absolute inset-y-0 left-0 w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
+          </div>
+          
+          {/* Subscription Status */}
+          <SubscriptionStatus isActive={true} showBoth={true} />
+        </div>
 
         {/* Quick Access Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
@@ -261,53 +236,8 @@ const StudentDashboard = () => {
           </button>
         </div>
 
-        {/* Recorded Class Section */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-gray-800">Recorded Class</h3>
-            <button className="text-[#3D08BA] font-medium text-sm hover:underline">
-              See more........
-            </button>
-          </div>
-
-          {/* Recorded Classes Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {recordedClasses.map((classItem) => (
-              <div
-                key={classItem.id}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-              >
-                {/* Thumbnail */}
-                <div className="relative h-40 bg-linear-to-br from-[#3D08BA] to-[#5a2dd4] overflow-hidden">
-                  <img 
-                    src={classItem.thumbnail}
-                    alt={classItem.title}
-                    className="w-full h-full object-cover opacity-20"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
-                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-[#3D08BA] border-b-8 border-b-transparent ml-1"></div>
-                    </div>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
-                    {classItem.duration}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-4">
-                  <h4 className="font-semibold text-gray-800 mb-2 line-clamp-2">
-                    {classItem.title}
-                  </h4>
-                  <div className="flex items-center justify-between text-xs text-gray-600">
-                    <span>{classItem.instructor}</span>
-                    <span>{classItem.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Recorded Class Section - Now using RecordClasses Component */}
+        <RecordClasses />
       </div>
 
       {/* Mobile Menu Overlay */}
