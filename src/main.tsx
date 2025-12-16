@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 
-// Import your page components
+// Import page components
 import SignUp from './pages/SignUp.tsx'
 import SignIn from './pages/SignIn.tsx'
 import SchoolRegistration from './pages/SchoolRegistration.tsx'
@@ -16,6 +16,9 @@ import StudentRegistration from './pages/StudentRegistration.tsx'
 import SchoolDashboard from './pages/dashboards/SchoolDashboard.tsx'
 import TutorDashboard from './pages/dashboards/TutorDashboard.tsx'
 import StudentDashboard from './pages/dashboards/StudentDashboard.tsx'
+import StudentProfile from './components/profiles/StudentProfile.tsx'
+
+//Import profiles
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -38,6 +41,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/school-dashboard" element={<SchoolDashboard />} />
         <Route path="/tutor-dashboard" element={<TutorDashboard />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
+
+        {/* Proile routes */}
+        <Route path='/my-profile' element={<StudentProfile />} />
       </Routes>
     </Router>
   </StrictMode>,

@@ -1,6 +1,6 @@
 import React, { type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IoMdArrowDropleft, IoMdCamera } from "react-icons/io";
+import { IoMdCamera } from "react-icons/io";
 import Logo from "../components/Logo"
 
 const StudentRegistration: React.FC = () => {
@@ -27,20 +27,12 @@ const StudentRegistration: React.FC = () => {
   navigate('/student-dashboard');
 }
 
-  const handleBack = (): void => {
-    navigate(-1);
-  }
-
 
   return (
     <div className='fixed inset-0 w-full h-full overflow-y-auto bg-white'>
       <div className='min-h-full flex flex-col'>
         {/* Header with Navigation Arrows */}
-        <div className='flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 shrink-0'>
-          <button onClick={handleBack} className='w-9 h-9 sm:w-10 sm:h-10 bg-[#3D08BA] rounded-full flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity'>
-            <IoMdArrowDropleft className='text-white' size={30} />
-          </button>
-        </div>
+        
 
         {/* Main Content */}
         <div className='flex-1 flex flex-col items-center px-4 sm:px-6 py-4 pb-8'>

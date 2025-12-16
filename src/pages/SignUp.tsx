@@ -31,7 +31,7 @@ const SignUp: React.FC = () => {
 
           {/* Welcome Section */}
           <div className='text-center mb-6 sm:mb-8 mt-4 sm:mt-10'>
-            <h1 className='text-3xl sm:text-3xl md:text-4xl font-semibold text-[#3D08BA] leading-tight mb-1'>
+            <h1 className='text-[25px] font-semibold text-[#3D08BA] leading-tight mb-1'>
               Welcome
             </h1>
           </div>

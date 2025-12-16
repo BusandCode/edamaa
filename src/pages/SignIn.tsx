@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
-import Logo from "../components/Logo";
+// import { FaGoogle } from 'react-icons/fa';
+// import Logo from "../components/Logo";
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -11,14 +11,13 @@ const SignIn: React.FC = () => {
   };
 
   const handleSignIn = (): void => {
-    // Add your sign in logic here
     console.log('Sign in clicked');
     // Navigate to school dashboard
     navigate('/dashboard');
   };
 
   const handleGoogleSignIn = (): void => {
-    // Add your Google sign in logic here
+    // Google sign in logic here
     console.log('Google sign in clicked');
   };
 
@@ -29,12 +28,12 @@ const SignIn: React.FC = () => {
         {/* Main Content */}
         <div className='w-full max-w-md'>
           {/* Logo */}
-          <div className='mb-8 flex justify-center'>
+          {/* <div className='mb-8 flex justify-center'>
             <Logo logoWidth={60} logoHeight={60} textSize="text-xl sm:text-2xl" gap="gap-2" centered={false} />
-          </div>
+          </div> */}
 
           {/* Title */}
-          <h1 className='text-3xl sm:text-4xl font-semibold text-[#3D08BA] mb-2 text-center'>
+          <h1 className='text-[25px] font-semibold text-[#3D08BA] mb-2 text-center'>
             Welcome Back
           </h1>
           <p className='text-gray-600 text-sm mb-8 text-center'>
@@ -94,20 +93,27 @@ const SignIn: React.FC = () => {
           {/* Google Sign In Button */}
           <button 
             onClick={handleGoogleSignIn}
-            className='w-full flex items-center justify-center gap-3 py-4 border-2 border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors mb-8'
+            className='w-full flex items-center justify-center gap-3 py-4 border-2 border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors mb-2'
           >
-            <FaGoogle size={20} className='text-[#DB4437]' />
+            {/* <FaGoogle size={20} className='text-[#DB4437]' /> */}
             Continue with Google
+          </button>
+          <button 
+            onClick={handleGoogleSignIn}
+            className='w-full flex items-center justify-center gap-3 py-4 border-2 border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors mb-2'
+          >
+            {/* <FaGoogle size={20} className='text-[#DB4437]' /> */}
+            Sign in with LinkedIn
           </button>
 
           {/* Sign Up Link */}
-          <div className='text-center'>
-            <p className='text-gray-600 text-sm mb-4'>
+          <div className='text-center flex justify-center items-center gap-2'>
+            <p className='text-gray-600 text-sm'>
               Don't have an account yet?
             </p>
             <button 
               onClick={() => handleNavigate('/signup')}
-              className='block w-full py-4 border-2 border-[#3D08BA] text-[#3D08BA] rounded-xl font-medium text-lg hover:bg-[#3D08BA] hover:text-white transition-all'
+              className='underline text-[#3D08BA] '
             >
               Sign up
             </button>

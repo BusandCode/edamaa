@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
-import { FaSearch, FaBell, FaBook, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine } from 'react-icons/fa';
+import { FaSearch, FaBell, FaBook, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaEdit, FaTasks, FaChartLine, FaPlus } from 'react-icons/fa';
 import Logo from "../../components/Logo";
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 import RecordClasses from "../../components/RecordClasses";
+import StudentProfile from "../../components/profiles/StudentProfile";
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [profileSrc, setProfileSrc] = useState<string | null>(null);
   const profileInputRef = useRef<HTMLInputElement | null>(null);
   const [name] = useState<string>('Andrew');
@@ -15,7 +17,7 @@ const StudentDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10">
+      <div className={`bg-white shadow-sm sticky top-0 z-10 ${showProfile ? 'blur-sm' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 py-4">
           {/* Logo, Search and Menu on same line */}
           <div className="flex items-center justify-between gap-3 mb-3">
@@ -159,17 +161,29 @@ const StudentDashboard = () => {
               </div>
             </div>
 
-            {/* Notification Bell */}
-            <button className="relative p-2 hover:bg-gray-100 rounded-full shrink-0">
-              <FaBell className="text-[#3D08BA] text-2xl" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
+            {/* Plus Button and Notification Bell */}
+            <div className="flex items-center gap-2">
+              {/* Plus Button to Open Profile */}
+              <button 
+                onClick={() => setShowProfile(true)}
+                className="relative p-2 hover:bg-gray-100 rounded-full shrink-0 transition-colors"
+                aria-label="Open profile"
+              >
+                <FaPlus className="text-[#3D08BA] text-xl" />
+              </button>
+
+              {/* Notification Bell */}
+              <button className="relative p-2 hover:bg-gray-100 rounded-full shrink-0">
+                <FaBell className="text-[#3D08BA] text-2xl" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className={`max-w-7xl mx-auto px-4 py-4 ${showProfile ? 'blur-sm' : ''}`}>
         {/* Earnings Overview Card */}
         <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white mb-6'>
           <div className='flex items-center justify-between mb-4'>
@@ -243,7 +257,7 @@ const StudentDashboard = () => {
       {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-20"
+          className={`fixed inset-0 bg-black bg-opacity-50 z-20 ${showProfile ? 'blur-sm' : ''}`}
           onClick={() => setMenuOpen(false)}
         >
           <div 
@@ -257,6 +271,19 @@ const StudentDashboard = () => {
               <a href="#" className="block text-gray-700 hover:text-[#3D08BA]">Help & Support</a>
               <a href="#" className="block text-gray-700 hover:text-[#3D08BA]">Logout</a>
             </nav>
+          </div>
+        </div>
+      )}
+
+      {/* Student Profile Modal */}
+      {showProfile && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={() => setShowProfile(false)}
+          ></div>
+          <div className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            <StudentProfile onClose={() => setShowProfile(false)} />
           </div>
         </div>
       )}
