@@ -151,13 +151,13 @@ const StudentDashboard = () => {
       {/* Main Content */}
       <div className={`max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 ${showProfile ? 'blur-sm' : ''}`}>
         {/* Earnings Overview Card */}
-        <div className='bg-gradient-to-r from-[#3D08BA] to-[#5010E0] rounded-xl sm:rounded-2xl p-4 sm:p-5 text-white mb-4 sm:mb-6'>
+        <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-xl sm:rounded-2xl p-4 sm:p-5 text-white mb-4 sm:mb-6'>
           <div className='flex items-center justify-between mb-3 sm:mb-4'>
             <h3 className='text-sm sm:text-base md:text-lg font-semibold'>Earnings Overview</h3>
             <span className='text-xs sm:text-sm font-medium'>30%</span>
           </div>
           <div className='relative h-2 sm:h-3 bg-white/20 rounded-full overflow-hidden mb-4 sm:mb-5'>
-            <div className='absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
+            <div className='absolute inset-y-0 left-0 w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
           </div>
           
           {/* Subscription Status */}
@@ -168,7 +168,7 @@ const StudentDashboard = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
           {/* My Subjects */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-blue-500 to-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
               <FaBook className="text-white text-lg sm:text-xl md:text-2xl" />
             </div>
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">My Subjects</span>
@@ -176,7 +176,7 @@ const StudentDashboard = () => {
 
           {/* Assignments */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-green-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-green-500 to-green-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
               <FaTasks className="text-white text-lg sm:text-xl md:text-2xl" />
             </div>
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Assignments</span>
@@ -184,7 +184,7 @@ const StudentDashboard = () => {
 
           {/* Join Class */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-xl sm:rounded-2xl flex items-center justify-center relative">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-red-500 to-red-700 rounded-xl sm:rounded-2xl flex items-center justify-center relative">
               <FaVideo className="text-white text-lg sm:text-xl md:text-2xl" />
               <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[8px] sm:text-xs px-1 sm:px-2 py-0.5 rounded-full font-bold">LIVE</span>
             </div>
@@ -193,7 +193,7 @@ const StudentDashboard = () => {
 
           {/* Performance Report */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-purple-500 to-purple-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
               <FaChartLine className="text-white text-lg sm:text-xl md:text-2xl" />
             </div>
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Performance Report</span>
@@ -201,7 +201,7 @@ const StudentDashboard = () => {
 
           {/* Resource Library */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-orange-500 to-orange-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
               <FaFileAlt className="text-white text-lg sm:text-xl md:text-2xl" />
             </div>
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Resource Library</span>
@@ -209,7 +209,7 @@ const StudentDashboard = () => {
 
           {/* Payment & Subscriptions */}
           <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-yellow-500 to-yellow-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
               <FaDollarSign className="text-white text-lg sm:text-xl md:text-2xl" />
             </div>
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Payment & Subscriptions</span>
