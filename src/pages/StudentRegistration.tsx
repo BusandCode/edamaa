@@ -1,8 +1,8 @@
 import React, { type FormEvent, useState } from 'react';
 import { IoMdCamera } from "react-icons/io";
-import Logo from '../components/Logo';
-import { useNavigate } from 'react-router-dom';
 
+// Mock imports - replace with your actual paths
+const Logo = () => <div className="font-bold text-2xl text-[#3D08BA]">LOGO</div>;
 
 // Import the languages data
 import { languages } from '../components/languages/Language';
@@ -11,7 +11,6 @@ const StudentRegistration: React.FC = () => {
   const [dateLabel, setDateLabel] = useState('Date of Birth');
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    const navigate = useNavigate();
     event.preventDefault();
     
     const formData = new FormData(event.currentTarget);
@@ -24,8 +23,9 @@ const StudentRegistration: React.FC = () => {
     
     console.log('Student registration form submitted');
     
-    // Navigate to Student Dashboard
-    navigate('/student-dashboard');
+    // Navigate to Student Dashboard - Uncomment this line when you have react-router-dom
+    // window.location.href = '/student-dashboard';
+    alert('Registration successful! Redirecting to dashboard...');
   }
 
   return (
@@ -35,7 +35,7 @@ const StudentRegistration: React.FC = () => {
         <div className='flex-1 flex flex-col items-center px-4 sm:px-6 py-4 pb-8'>
           {/* Logo Section */}
           <div className='mb-4'>
-          <Logo logoWidth={50} logoHeight={50} textSize="text-[12px]" gap="gap-2" centered={false} />
+            <Logo />
           </div>
 
           {/* Title */}
@@ -61,7 +61,7 @@ const StudentRegistration: React.FC = () => {
           </div>
 
           {/* Registration Form */}
-          <div className='w-full max-w-md space-y-4'>
+          <form onSubmit={handleSubmit} className='w-full max-w-md space-y-4'>
             <input
               type="text"
               name="fullName"
@@ -193,10 +193,10 @@ const StudentRegistration: React.FC = () => {
               </label>
             </div>
 
-            <button type="button" onClick={(e) => handleSubmit(e as any)} className='w-full bg-[#3D08BA] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-6'>
+            <button type="submit" className='w-full bg-[#3D08BA] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-6'>
               Register
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

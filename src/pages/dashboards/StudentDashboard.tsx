@@ -98,7 +98,14 @@ const StudentDashboard = () => {
                     alt="Profile picture"
                     className="w-full h-full object-cover"
                   />
-
+        {/* Plus Button to Open Profile */}
+                      <button 
+                        onClick={() => setShowProfile(true)}
+                        className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
+                        aria-label="Open profile"
+                      >
+                        <FaPlus className="text-[#3D08BA] text-sm sm:text-base md:text-lg lg:text-xl" />
+                      </button>
                   {/* Hover Overlay */}
                   <div className="
                     absolute inset-0
@@ -129,15 +136,6 @@ const StudentDashboard = () => {
 
             {/* Plus Button and Notification Bell */}
             <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
-              {/* Plus Button to Open Profile */}
-              <button 
-                onClick={() => setShowProfile(true)}
-                className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Open profile"
-              >
-                <FaPlus className="text-[#3D08BA] text-sm sm:text-base md:text-lg lg:text-xl" />
-              </button>
-
               {/* Notification Bell */}
               <button className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full">
                 <FaBell className="text-[#3D08BA] text-base sm:text-lg md:text-xl lg:text-2xl" />
