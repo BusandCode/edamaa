@@ -40,7 +40,7 @@ const StudentDashboard = () => {
           <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
             {/* Logo */}
             <div className='shrink-0'>
-              <NewLogo logoWidth={40} logoHeight={40} textSize="text-[14px]" gap="gap-1.5" centered={false} />
+              <NewLogo logoWidth={30} logoHeight={30} textSize="text-[14px]" gap="gap-1.5" centered={false} />
             </div>
 
             {/* Search Bar */}

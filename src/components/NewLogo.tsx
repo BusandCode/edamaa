@@ -14,7 +14,7 @@ const NewLogo = ({
   centered = true
 }: LogoProps) => {
   return (
-    <div className={`flex flex-row justify-center ${gap} ${centered ? 'fixed inset-0 w-full h-full overflow-hidden' : ''}`}>
+    <div className={`flex flex-row items-center justify-center ${gap} ${centered ? 'fixed inset-0 w-full h-full overflow-hidden' : ''}`}>
         <img 
           src="/logo/logo.png"
           alt="Logo"
