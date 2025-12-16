@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import NewLogo from '../../components/NewLogo';
 import { FaBars, FaBell, FaBook, FaTasks, FaVideo, FaChartLine, FaFileAlt, FaDollarSign, FaPlus } from 'react-icons/fa';
 import SubscriptionStatus from "../../components/SubscriptionStatus";
@@ -10,7 +10,7 @@ const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [profileSrc, setProfileSrc] = useState<string | null>(null);
-  const profileInputRef = useRef<HTMLInputElement | null>(null);
+  // const profileInputRef = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState<string>('Andrew');
   const [username, setUsername] = useState<string>('andrew123');
   const [email, setEmail] = useState<string>('andrew@example.com');
