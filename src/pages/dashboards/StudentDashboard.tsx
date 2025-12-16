@@ -67,74 +67,94 @@ const StudentDashboard = () => {
           {/* Welcome Section */}
           <div className="flex items-center justify-between gap-2">
             {/* Profile Avatar + Info */}
-            <div className="flex items-center gap-2 min-w-0 flex-1">
-              <div className="relative shrink-0">
-                <button
-                  type="button"
-                  aria-label="View profile"
-                  title="Click to view profile"
-                  onClick={() => setShowProfile(true)}
-                  className="
-                    group
-                    relative
-                    w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-                    rounded-full
-                    border-2 sm:border-3 md:border-4 border-[#F68C29]
-                    overflow-hidden
-                    bg-white
-                    flex items-center justify-center
-                    focus:outline-none
-                    focus:ring-2 focus:ring-[#3D08BA]
-                    transition
-                    cursor-pointer
-                  "
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+          {/* Profile Avatar */}
+          <div className="relative shrink-0 group">
+            {/* Avatar Button */}
+            <button
+              type="button"
+              aria-label="View profile"
+              title="View profile"
+              onClick={() => setShowProfile(true)}
+              className="
+                relative
+                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                rounded-full
+                overflow-hidden
+                border-2 sm:border-3 md:border-4 border-[#F68C29]
+                bg-gray-200
+                flex items-center justify-center
+                focus:outline-none
+                focus:ring-2 focus:ring-[#3D08BA]
+                transition
+              "
+            >
+              {/* Show image if uploaded, else SVG avatar */}
+              {profileSrc ? (
+                <img
+                  src={profileSrc}
+                  alt="Profile picture"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <svg
+                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <img
-                    src={
-                      profileSrc
-                        ? profileSrc
-                        : "https://api.dicebear.com/7.x/avataaars/svg?seed=student"
-                    }
-                    alt="Profile picture"
-                    className="w-full h-full object-cover"
-                  />
-        {/* Plus Button to Open Profile */}
-                      <button 
-                        onClick={() => setShowProfile(true)}
-                        className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full transition-colors"
-                        aria-label="Open profile"
-                      >
-                        <FaPlus className="text-[#3D08BA] text-sm sm:text-base md:text-lg lg:text-xl" />
-                      </button>
-                  {/* Hover Overlay */}
-                  <div className="
-                    absolute inset-0
-                    bg-black/40
-                    hidden sm:flex items-center justify-center
-                    text-white text-[8px] sm:text-[9px] md:text-[10px] font-medium
-                    opacity-0 group-hover:opacity-100
-                    transition-opacity
-                    px-0.5
-                  ">
-                    View Profile
-                  </div>
-                </button>
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+              )}
+
+              {/* Hover Overlay */}
+              <div
+                className="
+                  absolute inset-0
+                  bg-black/40
+                  hidden sm:flex
+                  items-center justify-center
+                  text-white text-[9px] md:text-[10px] font-medium
+                  opacity-0 group-hover:opacity-100
+                  transition-opacity
+                "
+              >
+                View Profile
               </div>
+            </button>
 
-              {/* Welcome + Name */}
-              <div className="min-w-0 flex-1">
-                <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-800 truncate leading-tight">
-                  Welcome, {name}
-                </h2>
+            {/* Plus Button */}
+            <button
+              type="button"
+              onClick={() => setShowProfile(true)}
+              aria-label="Open profile"
+              title="Open profile"
+              className="
+                absolute -bottom-1 -right-1
+                w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7
+                rounded-full
+                bg-[#3D08BA]
+                flex items-center justify-center
+                shadow-md
+                hover:bg-[#2c0691]
+                transition
+              "
+            >
+              <FaPlus className="text-white text-[10px] sm:text-xs md:text-sm" />
+            </button>
+          </div>
 
-                {/* Description - Read Only */}
-                <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 truncate leading-tight mt-0.5">
-                  {description}
-                </p>
-              </div>
-            </div>
+  {/* Welcome + Name */}
+  <div className="min-w-0 flex-1">
+    <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-800 truncate leading-tight">
+      Welcome, {name}
+    </h2>
 
-            {/* Plus Button and Notification Bell */}
+    <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 truncate leading-tight mt-0.5">
+      {description}
+    </p>
+  </div>
+</div>
+
             <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
               {/* Notification Bell */}
               <button className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full">

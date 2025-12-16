@@ -1,16 +1,19 @@
-import React, { type FormEvent, useState } from 'react';
+import React, { type FormEvent } from 'react';
 import { IoMdCamera } from "react-icons/io";
+import Logo from '../components/Logo';
+import { useNavigate } from "react-router-dom";
 
-// Mock imports - replace with your actual paths
-const Logo = () => <div className="font-bold text-2xl text-[#3D08BA]">LOGO</div>;
 
 // Import the languages data
 import { languages } from '../components/languages/Language';
 
 const StudentRegistration: React.FC = () => {
-  const [dateLabel, setDateLabel] = useState('Date of Birth');
+  // const [dateLabel, setDateLabel] = useState('Date of Birth');
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+
     event.preventDefault();
     
     const formData = new FormData(event.currentTarget);
@@ -26,6 +29,7 @@ const StudentRegistration: React.FC = () => {
     // Navigate to Student Dashboard - Uncomment this line when you have react-router-dom
     // window.location.href = '/student-dashboard';
     alert('Registration successful! Redirecting to dashboard...');
+    navigate('/student-dashboard');
   }
 
   return (
@@ -34,8 +38,8 @@ const StudentRegistration: React.FC = () => {
         {/* Main Content */}
         <div className='flex-1 flex flex-col items-center px-4 sm:px-6 py-4 pb-8'>
           {/* Logo Section */}
-          <div className='mb-4'>
-            <Logo />
+           <div className='mb-4'>
+            <Logo logoWidth={50} logoHeight={50} textSize="text-lg sm:text-xl" gap="gap-2" centered={false} />
           </div>
 
           {/* Title */}
@@ -98,24 +102,23 @@ const StudentRegistration: React.FC = () => {
             />
 
             {/* Fixed Date Field with Label */}
-            <div className='relative'>
-              <input
-                type="date"
-                name="dateOfBirth"
-                onFocus={() => setDateLabel('')}
-                onBlur={(e) => {
-                  if (!e.target.value) {
-                    setDateLabel('Date of Birth');
-                  }
-                }}
-                className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors'
-              />
-              {dateLabel && (
-                <span className='absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none'>
-                  {dateLabel}
-                </span>
-              )}
-            </div>
+            <div className="relative">
+                <label
+                  htmlFor="dob"
+                  className="absolute left-4 -top-2 bg-white px-1 text-xs text-gray-500"
+                >
+                  Date of Birth
+                </label>
+
+                <input
+                  id="dob"
+                  type="date"
+                  name="dateOfBirth"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg
+                            focus:outline-none focus:border-[#3D08BA]"
+                />
+              </div>
+
 
             {/* Language Select - Using imported languages data */}
             <select
