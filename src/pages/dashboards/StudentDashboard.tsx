@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
-import { FaSearch, FaBell, FaBook, FaFileAlt, FaDollarSign, FaVideo, FaBars, FaTasks, FaChartLine, FaPlus } from 'react-icons/fa';
-import Logo from "../../components/Logo";
+import NewLogo from '../../components/NewLogo';
+import { FaBars, FaBell, FaBook, FaTasks, FaVideo, FaChartLine, FaFileAlt, FaDollarSign, FaPlus } from 'react-icons/fa';
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 import RecordClasses from "../../components/RecordClasses";
 import StudentProfile from "../../components/profiles/StudentProfile";
+import { FaSearch } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ const StudentDashboard = () => {
           <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
             {/* Logo */}
             <div className='shrink-0'>
-              <Logo logoWidth={40} logoHeight={40} textSize="text-[11px]" gap="gap-1.5" centered={false} />
+              <NewLogo logoWidth={40} logoHeight={40} textSize="text-[14px]" gap="gap-1.5" centered={false} />
             </div>
 
             {/* Search Bar */}

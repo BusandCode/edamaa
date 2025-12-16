@@ -7,14 +7,14 @@ interface LogoProps {
 }
 
 const NewLogo = ({ 
-  logoWidth = 147, 
-  logoHeight = 176, 
-  textSize = "text-[38px]",
+  logoWidth = 80, 
+  logoHeight = 80, 
+  textSize = "text-[32px]",
   gap = "gap-[7px]",
   centered = true
 }: LogoProps) => {
   return (
-    <div className={`flex flex-row justify-center items-center ${gap} ${centered ? 'fixed inset-0 w-full h-full overflow-hidden' : ''}`}>
+    <div className={`flex flex-row justify-center ${gap} ${centered ? 'fixed inset-0 w-full h-full overflow-hidden' : ''}`}>
         <img 
           src="/logo/logo.png"
           alt="Logo"

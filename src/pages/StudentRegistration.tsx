@@ -1,6 +1,7 @@
 import React, { type FormEvent, useState } from 'react';
 import { IoMdCamera } from "react-icons/io";
-import NewLogo from '../components/NewLogo';
+import Logo from '../components/Logo';
+import { useNavigate } from 'react-router-dom';
 
 
 // Import the languages data
@@ -10,6 +11,7 @@ const StudentRegistration: React.FC = () => {
   const [dateLabel, setDateLabel] = useState('Date of Birth');
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    const navigate = useNavigate();
     event.preventDefault();
     
     const formData = new FormData(event.currentTarget);
@@ -23,7 +25,7 @@ const StudentRegistration: React.FC = () => {
     console.log('Student registration form submitted');
     
     // Navigate to Student Dashboard
-    // navigate('/student-dashboard');
+    navigate('/student-dashboard');
   }
 
   return (
@@ -33,7 +35,7 @@ const StudentRegistration: React.FC = () => {
         <div className='flex-1 flex flex-col items-center px-4 sm:px-6 py-4 pb-8'>
           {/* Logo Section */}
           <div className='mb-4'>
-          <NewLogo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
+          <Logo logoWidth={50} logoHeight={50} textSize="text-[12px]" gap="gap-2" centered={false} />
           </div>
 
           {/* Title */}
