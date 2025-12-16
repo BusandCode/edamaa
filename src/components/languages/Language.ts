@@ -1,5 +1,3 @@
-// languages.ts - Language data for the Language component
-
 export interface Language {
   code: string;
   name: string;

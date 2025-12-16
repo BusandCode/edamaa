@@ -23,7 +23,7 @@ const NewLogo = ({
           className="max-w-37.5"
         />
         <h1 className={`text-[#3D08BA] -ml-4 ${textSize} font-medium whitespace-nowrap`}>
-          Edamaa <span className={`text-[#F68C29] font-semibold ${textSize}`}>3D</span>
+          Edamaa<span className={`text-[#F68C29] font-semibold ${textSize}`}>3D</span>
         </h1>
     </div>
   )
