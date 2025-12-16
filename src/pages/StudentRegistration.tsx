@@ -1,44 +1,39 @@
-import React, { type FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { type FormEvent, useState } from 'react';
 import { IoMdCamera } from "react-icons/io";
-import Logo from "../components/Logo"
+import NewLogo from '../components/NewLogo';
+
+
+// Import the languages data
+import { languages } from '../components/languages/Language';
 
 const StudentRegistration: React.FC = () => {
-  const navigate = useNavigate();
+  const [dateLabel, setDateLabel] = useState('Date of Birth');
 
-  // To work on this later
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-  event.preventDefault();
-  
-  // Add your form validation logic here
-  const formData = new FormData(event.currentTarget);
-  
-  // Example validation - check if terms are agreed
-  const agreedToTerms = formData.get('agreedToTerms');
-  if (!agreedToTerms) {
-    alert('Please agree to the terms and conditions');
-    return;
+    event.preventDefault();
+    
+    const formData = new FormData(event.currentTarget);
+    
+    const agreedToTerms = formData.get('agreedToTerms');
+    if (!agreedToTerms) {
+      alert('Please agree to the terms and conditions');
+      return;
+    }
+    
+    console.log('Student registration form submitted');
+    
+    // Navigate to Student Dashboard
+    // navigate('/student-dashboard');
   }
-  
-  // Add your form submission logic here (API call, etc.)
-  console.log('Student registration form submitted');
-  
-  // Navigate to School Dashboard
-  navigate('/student-dashboard');
-}
-
 
   return (
     <div className='fixed inset-0 w-full h-full overflow-y-auto bg-white'>
       <div className='min-h-full flex flex-col'>
-        {/* Header with Navigation Arrows */}
-        
-
         {/* Main Content */}
         <div className='flex-1 flex flex-col items-center px-4 sm:px-6 py-4 pb-8'>
           {/* Logo Section */}
           <div className='mb-4'>
-            <Logo logoWidth={50} logoHeight={50} textSize="text-lg sm:text-xl" gap="gap-2" centered={false} />
+          <NewLogo logoWidth={50} logoHeight={50} textSize="text-[13px]" gap="gap-2" centered={false} />
           </div>
 
           {/* Title */}
@@ -64,7 +59,7 @@ const StudentRegistration: React.FC = () => {
           </div>
 
           {/* Registration Form */}
-          <form onSubmit={handleSubmit} className='w-full max-w-md space-y-4'>
+          <div className='w-full max-w-md space-y-4'>
             <input
               type="text"
               name="fullName"
@@ -100,19 +95,38 @@ const StudentRegistration: React.FC = () => {
               className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors'
             />
 
-            <input
-              type="date"
-              name="dateOfBirth"
-              placeholder="Date of birth"
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors text-gray-500'
-            />
+            {/* Fixed Date Field with Label */}
+            <div className='relative'>
+              <input
+                type="date"
+                name="dateOfBirth"
+                onFocus={() => setDateLabel('')}
+                onBlur={(e) => {
+                  if (!e.target.value) {
+                    setDateLabel('Date of Birth');
+                  }
+                }}
+                className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors'
+              />
+              {dateLabel && (
+                <span className='absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none'>
+                  {dateLabel}
+                </span>
+              )}
+            </div>
 
-            <input
-              type="text"
+            {/* Language Select - Using imported languages data */}
+            <select
               name="language"
-              placeholder="Language"
-              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors'
-            />
+              className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#3D08BA] transition-colors text-gray-500'
+            >
+              <option value="">Select Language</option>
+              {languages.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.name} ({lang.nativeName})
+                </option>
+              ))}
+            </select>
 
             <select
               name="gender"
@@ -177,10 +191,10 @@ const StudentRegistration: React.FC = () => {
               </label>
             </div>
 
-            <button type="submit" className='w-full bg-[#3D08BA] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-6'>
+            <button type="button" onClick={(e) => handleSubmit(e as any)} className='w-full bg-[#3D08BA] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity mt-6'>
               Register
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
