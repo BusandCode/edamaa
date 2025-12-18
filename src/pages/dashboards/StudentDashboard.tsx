@@ -3,7 +3,7 @@ import NewLogo from '../../components/NewLogo';
 import { FaBars, FaBell, FaBook, FaTasks, FaVideo, FaChartLine, FaFileAlt, FaDollarSign, FaPlus } from 'react-icons/fa';
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 import RecordClasses from "../../components/RecordClasses";
-import StudentProfile from "../../components/profiles/StudentProfile";
+import StudentProfile from "../profiles/StudentProfile";
 import { FaSearch } from 'react-icons/fa';
 
 const StudentDashboard = () => {

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 // Import the languages data
-import { languages } from '../components/languages/Language';
+import { languages } from '../components/Language';
 
 const StudentRegistration: React.FC = () => {
   // const [dateLabel, setDateLabel] = useState('Date of Birth');

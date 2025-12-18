@@ -16,7 +16,7 @@ import StudentRegistration from './pages/StudentRegistration.tsx'
 import SchoolDashboard from './pages/dashboards/SchoolDashboard.tsx'
 import TutorDashboard from './pages/dashboards/TutorDashboard.tsx'
 import StudentDashboard from './pages/dashboards/StudentDashboard.tsx'
-import StudentProfile from './components/profiles/StudentProfile.tsx'
+import StudentProfile from './pages/profiles/StudentProfile.tsx'
 
 //Import profiles
 
