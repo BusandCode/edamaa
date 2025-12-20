@@ -444,9 +444,6 @@ const App = () => {
           <div className="flex space-x-8 mb-12 border-b border-gray-200 overflow-x-auto">
             <button className="pb-4 border-b-4 border-[#3D08BA] font-semibold text-[#3D08BA] whitespace-nowrap">All Courses</button>
             <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Technology</button>
-            <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Business</button>
-            <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Creative Arts</button>
-            <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Languages</button>
             <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Sciences</button>
           </div>
 
@@ -507,63 +504,7 @@ const App = () => {
             </div>
           </div>
 
-          {/* Business & Marketing Category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xl font-semibold text-[#3D08BA]">Business & Marketing</h3>
-              <div className="h-px grow bg-gray-200"></div>
-              <button className="text-[#3D08BA] font-medium text-sm hover:text-[#F68C29] transition-colors">
-                See all →
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Digital Marketing Mastery", duration: "32h", students: "15,450", rating: "4.8", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80", instructor: "David Chen", level: "Beginner" },
-                { title: "Social Media Strategy", duration: "24h", students: "11,920", rating: "4.7", img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&q=80", instructor: "Emma Wilson", level: "Intermediate" },
-                { title: "Business Analytics Pro", duration: "36h", students: "9,330", rating: "4.9", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80", instructor: "James Lee", level: "Advanced" },
-                { title: "Entrepreneurship Essentials", duration: "28h", students: "13,780", rating: "5.0", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80", instructor: "Lisa Brown", level: "Beginner" }
-              ].map((course, idx) => (
-                <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
-                  <div className="relative overflow-hidden">
-                    <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                      <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
-                    </div>
-                    <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
-                      {course.level}
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">
-                      {course.duration}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-xs text-[#F68C29] font-medium">COURSE</div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#F68C29]">⭐</span>
-                        <span className="text-sm font-medium text-gray-700">{course.rating}</span>
-                      </div>
-                    </div>
-                    <h4 className="font-semibold text-[#3D08BA] mb-2 text-[14px] line-clamp-2">{course.title}</h4>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-6 h-6 bg-[#F68C29] rounded-full flex items-center justify-center text-white text-xs font-medium">
-                        {course.instructor.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <p className="text-xs text-gray-600">{course.instructor}</p>
-                    </div>
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                      <p className="text-xs text-gray-600">{course.students} students</p>
-                      <button className="text-[#3D08BA] font-medium text-xs hover:text-[#F68C29] transition-colors">
-                        Enroll →
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        
           {/* Design & Creative Category */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
@@ -678,62 +619,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Languages Category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xl font-semibold text-[#3D08BA]">Languages</h3>
-              <div className="h-px grow bg-gray-200"></div>
-              <button className="text-[#3D08BA] font-medium text-sm hover:text-[#F68C29] transition-colors">
-                See all →
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "English Fluency Mastery", duration: "26h", students: "18,450", rating: "4.9", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&q=80", instructor: "Emily Parker", level: "Beginner" },
-                { title: "Spanish for Beginners", duration: "22h", students: "14,920", rating: "4.8", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80", instructor: "Carlos Martinez", level: "Beginner" },
-                { title: "French Complete Course", duration: "30h", students: "11,330", rating: "4.7", img: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=400&q=80", instructor: "Marie Dubois", level: "Intermediate" },
-                { title: "Mandarin Chinese Essentials", duration: "28h", students: "9,780", rating: "5.0", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&q=80", instructor: "Li Wei", level: "Beginner" }
-              ].map((course, idx) => (
-                <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
-                  <div className="relative overflow-hidden">
-                    <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                      <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
-                    </div>
-                    <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
-                      {course.level}
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">
-                      {course.duration}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-xs text-[#F68C29] font-medium">COURSE</div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#F68C29]">⭐</span>
-                        <span className="text-sm font-medium text-gray-700">{course.rating}</span>
-                      </div>
-                    </div>
-                    <h4 className="font-semibold text-[#3D08BA] mb-2 text-[14px] line-clamp-2">{course.title}</h4>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-6 h-6 bg-[#F68C29] rounded-full flex items-center justify-center text-white text-xs font-medium">
-                        {course.instructor.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <p className="text-xs text-gray-600">{course.instructor}</p>
-                    </div>
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                      <p className="text-xs text-gray-600">{course.students} students</p>
-                      <button className="text-[#3D08BA] font-medium text-xs hover:text-[#F68C29] transition-colors">
-                        Enroll →
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Sciences Category */}
           <div className="mb-16">

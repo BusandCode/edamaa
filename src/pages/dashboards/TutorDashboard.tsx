@@ -190,7 +190,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-[#3D08BA] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
-                <FaBook className="text-[#3D08BA] text-2xl" />
+                <FaBook className="text-[white] text-2xl" />
               </div>
               <h3 className="text-sm text-gray-600 mb-1">Total Courses</h3>
               <p className="text-2xl font-bold text-gray-800">12</p>
@@ -200,7 +200,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-[#3D08BA] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
-                <FaUserGraduate className="text-[#3D08BA] text-2xl" />
+                <FaUserGraduate className="text-white text-2xl" />
               </div>
               <h3 className="text-sm text-gray-600 mb-1">Students List</h3>
               <p className="text-2xl font-bold text-gray-800">847</p>
@@ -210,7 +210,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-[#3D08BA] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
-                <FaMoneyBillWave className="text-[#3D08BA] text-2xl" />
+                <FaMoneyBillWave className="text-white text-2xl" />
               </div>
               <h3 className="text-sm text-gray-600 mb-1">Earnings</h3>
               <p className="text-2xl font-bold text-gray-800">$45,280</p>
@@ -256,7 +256,7 @@ const TutorDashboard = () => {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold text-gray-800">Upcoming Class</h3>
-            <button className="text-[#3D08BA] font-medium flex items-center gap-1 hover:underline">
+            <button className="text-white font-medium flex items-center gap-1 hover:underline">
               View All →
             </button>
           </div>
