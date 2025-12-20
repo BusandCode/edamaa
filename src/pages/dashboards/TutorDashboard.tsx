@@ -319,32 +319,34 @@ const TutorDashboard = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-around py-3">
-            <button className="flex flex-col items-center gap-1 text-[#F68C29] hover:text-[#3D08BA] transition-colors">
-              <FaHome className="text-2xl" />
-              <span className="text-xs">Home</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-[#3D08BA] transition-colors">
-              <FaPhone className="text-2xl" />
-              <span className="text-xs">Calls</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-[#3D08BA] transition-colors">
-              <FaChartBar className="text-2xl" />
-              <span className="text-xs">Analytics</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-[#3D08BA] transition-colors">
-              <FaUser className="text-2xl" />
-              <span className="text-xs">Profile</span>
-            </button>
-            <button className="w-14 h-14 bg-linear-to-r from-[#F68C29] to-[#ffa94d] rounded-full flex items-center justify-center -mt-6 shadow-lg hover:shadow-xl transition-shadow">
-              <FaPlus className="text-white text-2xl" />
-            </button>
-          </div>
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg md:hidden">
+        <div className="flex justify-around items-center py-4 px-2">
+          <button className="flex flex-col items-center gap-1 text-orange-500">
+            <div className="bg-orange-100 p-3 rounded-lg">
+              <FaHome size={20} />
+            </div>
+            <span className="text-xs">Home</span>
+          </button>
+          <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-orange-500">
+            <div className="p-3 rounded-lg hover:bg-orange-100">
+              <FaBook size={20} />
+            </div>
+            <span className="text-xs">Courses</span>
+          </button>
+          <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-orange-500">
+            <div className="p-3 rounded-lg hover:bg-orange-100">
+              <FaUserGraduate size={20} />
+            </div>
+            <span className="text-xs">Students</span>
+          </button>
+          <button className="flex flex-col items-center gap-1 text-gray-600 hover:text-orange-500">
+            <div className="p-3 rounded-lg hover:bg-orange-100">
+              <FaMoneyBillWave size={20} />
+            </div>
+            <span className="text-xs">Earnings</span>
+          </button>
         </div>
       </div>
-
       {/* Share Modal */}
       {showShareModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
