@@ -219,7 +219,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaBook className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaBook className="text-white text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Total Courses</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">12</p>
@@ -229,7 +229,7 @@ const TutorDashboard = () => {
           <div onClick={handleStudentListClick} className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaUserGraduate className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaUserGraduate className="text-white text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Students List</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">847</p>
@@ -239,7 +239,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaMoneyBillWave className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaMoneyBillWave className="text-white text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Earnings</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">$45,280</p>
