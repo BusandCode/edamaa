@@ -18,7 +18,8 @@ import TutorDashboard from './pages/dashboards/TutorDashboard.tsx'
 import StudentDashboard from './pages/dashboards/StudentDashboard.tsx'
 import StudentProfile from './pages/profiles/StudentProfile.tsx'
 
-//Import profiles
+//Import students
+import StudentList from './pages/students/StudentList.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -44,6 +45,9 @@ createRoot(document.getElementById('root')!).render(
 
         {/* Proile routes */}
         <Route path='/my-profile' element={<StudentProfile />} />
+
+        {/* Students Route */}
+        <Route path='/student-list' element={<StudentList />} />
       </Routes>
     </Router>
   </StrictMode>,

@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
-import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaPhone, FaChartBar, FaUser, FaPlus, FaClock, FaCalendar, FaShare, FaCopy, FaVideo, FaEdit } from 'react-icons/fa';
+import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome,FaClock, FaCalendar, FaShare, FaCopy, FaVideo, FaEdit } from 'react-icons/fa';
 import { IoMdCamera } from 'react-icons/io';
 import Logo from "../../components/Logo";
+import { useNavigate } from 'react-router-dom';
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
@@ -13,6 +14,12 @@ const TutorDashboard = () => {
   const [name, setName] = useState<string>('Abdulrahman Farhan');
   const [isEditingName, setIsEditingName] = useState<boolean>(false);
   const [showMobileSearch, setShowMobileSearch] = useState<boolean>(false);
+
+
+  const navigate = useNavigate();
+  const handleStudentList = () => {
+    navigate('/student-list');
+  }
 
   const upcomingClasses = [
     {
@@ -186,7 +193,7 @@ const TutorDashboard = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-6 pb-28">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid gap-4 mb-6">
           <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-[#3D08BA] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
@@ -197,7 +204,7 @@ const TutorDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+          <div onClick={handleStudentList} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-[#3D08BA] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
                 <FaUserGraduate className="text-white text-2xl" />
