@@ -322,7 +322,7 @@ const TutorDashboard = () => {
                   </div>
                   <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg flex items-center gap-1 sm:gap-2">
                     <FaCalendar className="text-white text-[14px]" />
-                    <span className="text-white text-[14px] font-medium">{classItem.date}</span>
+                    <span className="text-black text-[12px] font-medium">{classItem.date}</span>
                   </div>
                 </div>
 
@@ -332,7 +332,7 @@ const TutorDashboard = () => {
                 </h4>
 
                 {/* Time and Action */}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3">
+                <div className="flex items-stretch sm:items-center justify-between gap-2 sm:gap-3">
                   <div className="bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center justify-center gap-1 sm:gap-2">
                     <FaClock className="text-gray-700 text-xs sm:text-sm" />
                     <span className="text-gray-800 font-medium text-xs sm:text-sm">{classItem.time}</span>
