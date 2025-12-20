@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaClock, FaCalendar, FaShare, FaCopy, FaVideo, FaPlus } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom';
 import NewLogo from '../../components/NewLogo';
 
 const TutorDashboard = () => {
@@ -38,6 +38,11 @@ const TutorDashboard = () => {
     navigator.clipboard.writeText(classroomId);
     alert('Classroom ID copied!');
   };
+
+  const navigate = useNavigate();
+  const handleStudentListClick = () => {
+    navigate('/student-list');
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -221,7 +226,7 @@ const TutorDashboard = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+          <div onClick={handleStudentListClick} className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
                 <FaUserGraduate className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
@@ -357,7 +362,7 @@ const TutorDashboard = () => {
             </div>
             <span className="text-[10px] sm:text-xs">Courses</span>
           </button>
-          <button className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
+          <button onClick={handleStudentListClick} className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
             <div className="p-2 sm:p-2.5 rounded-lg hover:bg-orange-100">
               <FaUserGraduate size={16} className="sm:w-5 sm:h-5" />
             </div>
