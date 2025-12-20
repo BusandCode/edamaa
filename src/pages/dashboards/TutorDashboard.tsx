@@ -182,13 +182,13 @@ const TutorDashboard = () => {
                     transition
                   "
                 >
-                  <FaPlus className="text-white text-[10px] sm:text-xs md:text-sm" />
+                  <FaPlus className="text-white text-[14px] md:text-sm" />
                 </button>
               </div>
 
               {/* Name and Welcome */}
               <div className="min-w-0 flex-1">
-                <p className="text-[10px] sm:text-xs text-gray-600 leading-tight">Welcome</p>
+                <p className="text-[14px] text-gray-600 leading-tight">Welcome</p>
                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 truncate leading-tight mt-0.5">
                   {name}
                 </h2>
@@ -197,7 +197,7 @@ const TutorDashboard = () => {
 
             {/* Share Classroom ID */}
             <div className="w-full sm:w-auto bg-linear-to-r from-[#F68C29] to-[#ffa94d] px-3 sm:px-4 py-2 rounded-lg">
-              <p className="text-[10px] sm:text-xs text-white">Share Classroom ID</p>
+              <p className="text-[14px] text-white">Share Classroom ID</p>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-xs sm:text-sm font-bold text-white">ID: {classroomId}</span>
                 <button onClick={copyToClipboard} className="text-white hover:scale-110 transition-transform">
@@ -221,7 +221,7 @@ const TutorDashboard = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
                 <FaBook className="text-white text-xs sm:text-sm md:text-base" />
               </div>
-              <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Total Courses</h3>
+              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Courses</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">12</p>
             </div>
           </div>
@@ -231,7 +231,7 @@ const TutorDashboard = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
                 <FaUserGraduate className="text-white text-xs sm:text-sm md:text-base" />
               </div>
-              <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Students List</h3>
+              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Students List</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">847</p>
             </div>
           </div>
@@ -241,7 +241,7 @@ const TutorDashboard = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
                 <FaMoneyBillWave className="text-white text-xs sm:text-sm md:text-base" />
               </div>
-              <h3 className="text-[10px] sm:text-xs md:text-sm text-gray-600 mb-1 text-center">Earnings</h3>
+              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Earnings</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">$45,280</p>
             </div>
           </div>
@@ -316,13 +316,13 @@ const TutorDashboard = () => {
                         />
                       </div>
                       <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-white flex items-center justify-center">
-                        <span className="text-[10px] sm:text-xs font-bold text-gray-700">+{classItem.students}</span>
+                        <span className="text-[14px] font-bold text-gray-700">+{classItem.students}</span>
                       </div>
                     </div>
                   </div>
                   <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg flex items-center gap-1 sm:gap-2">
-                    <FaCalendar className="text-white text-[10px] sm:text-xs" />
-                    <span className="text-white text-[10px] sm:text-xs font-medium">{classItem.date}</span>
+                    <FaCalendar className="text-white text-[14px]" />
+                    <span className="text-white text-[14px] font-medium">{classItem.date}</span>
                   </div>
                 </div>
 
@@ -354,25 +354,25 @@ const TutorDashboard = () => {
             <div className="bg-orange-100 p-2 sm:p-2.5 rounded-lg">
               <FaHome size={16} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-[10px] sm:text-xs">Home</span>
+            <span className="text-[14px]">Home</span>
           </button>
           <button className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
             <div className="p-2 sm:p-2.5 rounded-lg hover:bg-orange-100">
               <FaBook size={16} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-[10px] sm:text-xs">Courses</span>
+            <span className="text-[14px]">Courses</span>
           </button>
           <button onClick={handleStudentListClick} className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
             <div className="p-2 sm:p-2.5 rounded-lg hover:bg-orange-100">
               <FaUserGraduate size={16} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-[10px] sm:text-xs">Students</span>
+            <span className="text-[14px]">Students</span>
           </button>
           <button className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
             <div className="p-2 sm:p-2.5 rounded-lg hover:bg-orange-100">
               <FaMoneyBillWave size={16} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-[10px] sm:text-xs">Earnings</span>
+            <span className="text-[14px]">Earnings</span>
           </button>
         </div>
       </div>
