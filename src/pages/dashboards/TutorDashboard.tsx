@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaClock, FaCalendar, FaShare, FaCopy, FaVideo, FaPlus } from 'react-icons/fa';
+import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaClock, FaCalendar, FaCopy, FaVideo, FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import NewLogo from '../../components/NewLogo';
+import { students } from '../students/students';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
-  const [showShareModal, setShowShareModal] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
 
   // Profile image and editable name
@@ -34,10 +37,14 @@ const TutorDashboard = () => {
 
   const classroomId = '224091556';
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(classroomId);
-    alert('Classroom ID copied!');
-  };
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(classroomId);
+      toast.success('Classroom ID copied successfully');
+    } catch (err) {
+      toast.error('Failed to copy classroom ID');
+    }
+  }; 
 
   const navigate = useNavigate();
   const handleStudentListClick = () => {
@@ -196,15 +203,12 @@ const TutorDashboard = () => {
             </div>
 
             {/* Share Classroom ID */}
-            <div className="w-full sm:w-auto bg-linear-to-r from-[#F68C29] to-[#ffa94d] px-3 sm:px-4 py-2 rounded-lg">
+            <div className="w-full sm:w-auto bg-[#F68C29] px-3 sm:px-4 py-2 rounded-lg">
               <p className="text-[14px] text-white">Share Classroom ID</p>
-              <div className="flex items-center gap-2 mt-1">
+              <div onClick={copyToClipboard}  className="flex items-center gap-2 mt-1">
                 <span className="text-xs sm:text-sm font-bold text-white">ID: {classroomId}</span>
-                <button onClick={copyToClipboard} className="text-white hover:scale-110 transition-transform">
+                <button className="text-white hover:scale-110 transition-transform">
                   <FaCopy className="text-xs sm:text-sm" />
-                </button>
-                <button onClick={() => setShowShareModal(true)} className="text-white hover:scale-110 transition-transform">
-                  <FaShare className="text-xs sm:text-sm" />
                 </button>
               </div>
             </div>
@@ -231,8 +235,8 @@ const TutorDashboard = () => {
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
                 <FaUserGraduate className="text-white text-xs sm:text-sm md:text-base" />
               </div>
-              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Students List</h3>
-              <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">847</p>
+              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Students</h3>
+              <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">{students.length}</p>
             </div>
           </div>
 
@@ -295,7 +299,7 @@ const TutorDashboard = () => {
             {upcomingClasses.map((classItem) => (
               <div
                 key={classItem.id}
-                className="bg-linear-to-br from-[#F68C29] to-[#ffa94d] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-linear-to-r from-[#5a18f2] to-[#3D08BA] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
                 {/* Student Avatars and Date */}
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -337,7 +341,7 @@ const TutorDashboard = () => {
                     <FaClock className="text-gray-700 text-xs sm:text-sm" />
                     <span className="text-gray-800 font-medium text-xs sm:text-sm">{classItem.time}</span>
                   </div>
-                  <button className="bg-white text-gray-800 px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-xs sm:text-sm md:text-base">
+                  <button className="bg-[#F68C29] text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-xs sm:text-sm md:text-base">
                     Start Class
                   </button>
                 </div>
@@ -377,31 +381,7 @@ const TutorDashboard = () => {
         </div>
       </div>
 
-      {/* Share Modal */}
-      {showShareModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3 sm:p-4">
-          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 max-w-md w-full">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Share Classroom ID</h3>
-            <div className="bg-gray-100 p-3 sm:p-4 rounded-lg mb-3 sm:mb-4">
-              <p className="text-center text-sm sm:text-base font-bold text-[#3D08BA]">{classroomId}</p>
-            </div>
-            <div className="flex gap-2 sm:gap-3">
-              <button
-                onClick={copyToClipboard}
-                className="flex-1 bg-[#3D08BA] text-white py-2 sm:py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base"
-              >
-                Copy ID
-              </button>
-              <button
-                onClick={() => setShowShareModal(false)}
-                className="flex-1 bg-gray-200 text-gray-800 py-2 sm:py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors text-sm sm:text-base"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
 
     </div>
   );
