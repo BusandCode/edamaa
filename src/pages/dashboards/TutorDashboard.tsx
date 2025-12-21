@@ -5,18 +5,19 @@ import NewLogo from '../../components/NewLogo';
 import { students } from '../students/students';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ScheduleClass, { type NewClassData } from '../../components/ScheduleClass';
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
   const [showProfile, setShowProfile] = useState(false);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
 
   // Profile image and editable name
   const [profileSrc] = useState(null);
   const [name] = useState('Abdulrahman Farhan');
   const [showMobileSearch, setShowMobileSearch] = useState(false);
 
-  const upcomingClasses = [
+  const [upcomingClasses, setUpcomingClasses] = useState([
     {
       id: 1,
       title: 'Introduction to Financial Accounting',
@@ -33,7 +34,7 @@ const TutorDashboard = () => {
       students: 18,
       avatars: 3
     }
-  ];
+  ]);
 
   const classroomId = '224091556';
 
@@ -46,10 +47,14 @@ const TutorDashboard = () => {
     }
   }; 
 
+  const handleScheduleClass = (newClass: NewClassData) => {
+    setUpcomingClasses([...upcomingClasses, newClass]);
+  };
+
   const navigate = useNavigate();
   const handleStudentListClick = () => {
     navigate('/student-list');
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -203,7 +208,7 @@ const TutorDashboard = () => {
             </div>
 
             {/* Share Classroom ID */}
-            <div className="w-full sm:w-auto bg-[#F68C29] px-3 sm:px-4 py-2 rounded-lg">
+            <div className="w-2/4 sm:w-auto bg-[#F68C29] px-3 sm:px-4 py-2 rounded-lg">
               <p className="text-[14px] text-white">Share Classroom ID</p>
               <div onClick={copyToClipboard}  className="flex items-center gap-2 mt-1">
                 <span className="text-xs sm:text-sm font-bold text-white">ID: {classroomId}</span>
@@ -289,8 +294,12 @@ const TutorDashboard = () => {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3 sm:mb-4">
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">Upcoming Class</h3>
-            <button className="text-[#3D08BA] text-xs sm:text-sm font-medium flex items-center gap-1 hover:underline">
-              View All →
+            <button 
+              onClick={() => setShowScheduleModal(true)}
+              className="bg-[#3D08BA] text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-[#2c0691] transition-colors flex items-center gap-2"
+            >
+              <FaPlus className="text-xs" />
+              Schedule Class
             </button>
           </div>
 
@@ -381,7 +390,24 @@ const TutorDashboard = () => {
         </div>
       </div>
 
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      {/* Schedule Class Modal Component */}
+      <ScheduleClass 
+        isOpen={showScheduleModal}
+        onClose={() => setShowScheduleModal(false)}
+        onSchedule={handleScheduleClass}
+      />
+
+      <ToastContainer 
+        position="top-right" 
+        autoClose={3000} 
+        hideProgressBar={false} 
+        newestOnTop={false} 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+      />
 
     </div>
   );
