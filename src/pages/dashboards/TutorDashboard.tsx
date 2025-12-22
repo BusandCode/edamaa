@@ -6,6 +6,7 @@ import { students } from '../students/students';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScheduleClass, { type NewClassData } from '../../components/ScheduleClass';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
@@ -49,6 +50,10 @@ const TutorDashboard = () => {
 
   const handleScheduleClass = (newClass: NewClassData) => {
     setUpcomingClasses([...upcomingClasses, newClass]);
+  };
+
+  const handleGoLive = () => {
+    toast.info('Starting live session...');
   };
 
   const navigate = useNavigate();
@@ -228,17 +233,17 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaBook className="text-white text-xs sm:text-sm md:text-base" />
+                <FaBook className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Courses</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">12</p>
             </div>
           </div>
 
-          <div onClick={handleStudentListClick} className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+          <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaUserGraduate className="text-white text-xs sm:text-sm md:text-base" />
+                <FaUserGraduate className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Students</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">{students.length}</p>
@@ -248,7 +253,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaMoneyBillWave className="text-white text-xs sm:text-sm md:text-base" />
+                <FaMoneyBillWave className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Earnings</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">$45,280</p>
@@ -262,7 +267,7 @@ const TutorDashboard = () => {
             onClick={() => setActiveTab('group')}
             className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-medium transition-colors text-xs sm:text-sm md:text-base whitespace-nowrap ${
               activeTab === 'group'
-                ? 'bg-gray-100 text-gray-800'
+                ? 'bg-[#3D08BA] text-white'
                 : 'text-gray-600 hover:bg-gray-50'
             }`}
           >
@@ -272,7 +277,7 @@ const TutorDashboard = () => {
             onClick={() => setActiveTab('classroom')}
             className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-medium transition-colors text-xs sm:text-sm md:text-base whitespace-nowrap ${
               activeTab === 'classroom'
-                ? 'bg-gray-100 text-gray-800'
+                ? 'bg-[#3D08BA] text-white'
                 : 'text-gray-600 hover:bg-gray-50'
             }`}
           >
@@ -282,7 +287,7 @@ const TutorDashboard = () => {
             onClick={() => setActiveTab('live')}
             className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-medium transition-colors flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap ${
               activeTab === 'live'
-                ? 'bg-gray-100 text-gray-800'
+                ? 'bg-[#3D08BA] text-white'
                 : 'text-gray-600 hover:bg-gray-50'
             }`}
           >
@@ -290,74 +295,158 @@ const TutorDashboard = () => {
           </button>
         </div>
 
-        {/* Upcoming Classes Section */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-3 sm:mb-4">
-            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">Upcoming Class</h3>
-            <button 
-              onClick={() => setShowScheduleModal(true)}
-              className="bg-[#3D08BA] text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold hover:bg-[#2c0691] transition-colors flex items-center gap-2"
+        {/* Conditional Content Based on Active Tab */}
+        {/* Conditional Content Based on Active Tab */}
+        <AnimatePresence mode="wait">
+          {activeTab === 'classroom' && (
+            <motion.div 
+              key="classroom"
+              // variants={tabContentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="mb-6"
             >
-              <FaPlus className="text-xs" />
-              Schedule Class
-            </button>
-          </div>
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">Upcoming Class</h3>
+              </div>
 
-          {/* Class Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-            {upcomingClasses.map((classItem) => (
-              <div
-                key={classItem.id}
-                className="bg-linear-to-r from-[#5a18f2] to-[#3D08BA] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                {/* Student Avatars and Date */}
-                <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className="flex items-center">
-                    <div className="flex -space-x-2">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white overflow-hidden bg-white">
-                        <img 
-                          src="https://api.dicebear.com/7.x/avataaars/svg?seed=student1" 
-                          alt="Student"
-                          className="w-full h-full"
-                        />
+              {/* Class Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                {upcomingClasses.map((classItem, index) => (
+                  <motion.div
+                    key={classItem.id}
+                    custom={index}
+                    // variants={cardVariants}
+                    initial="hidden"
+                    animate="visible"
+                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                    className="bg-gradient-to-r from-[#5a18f2] to-[#3D08BA] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
+                  >
+                    {/* Student Avatars and Date */}
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div className="flex items-center">
+                        <div className="flex -space-x-2">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white overflow-hidden bg-white">
+                            <img 
+                              src="https://api.dicebear.com/7.x/avataaars/svg?seed=student1" 
+                              alt="Student"
+                              className="w-full h-full"
+                            />
+                          </div>
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white overflow-hidden bg-white">
+                            <img 
+                              src="https://api.dicebear.com/7.x/avataaars/svg?seed=student2" 
+                              alt="Student"
+                              className="w-full h-full"
+                            />
+                          </div>
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-white flex items-center justify-center">
+                            <span className="text-[14px] font-bold text-gray-700">+{classItem.students}</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white overflow-hidden bg-white">
-                        <img 
-                          src="https://api.dicebear.com/7.x/avataaars/svg?seed=student2" 
-                          alt="Student"
-                          className="w-full h-full"
-                        />
-                      </div>
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-white flex items-center justify-center">
-                        <span className="text-[14px] font-bold text-gray-700">+{classItem.students}</span>
+                      <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg flex items-center gap-1 sm:gap-2">
+                        <FaCalendar className="text-white text-[14px]" />
+                        <span className="text-white text-[12px] font-medium">{classItem.date}</span>
                       </div>
                     </div>
-                  </div>
-                  <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg flex items-center gap-1 sm:gap-2">
-                    <FaCalendar className="text-white text-[14px]" />
-                    <span className="text-black text-[12px] font-medium">{classItem.date}</span>
-                  </div>
-                </div>
 
-                {/* Class Title */}
-                <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 line-clamp-2">
-                  {classItem.title}
-                </h4>
+                    {/* Class Title */}
+                    <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-3 sm:mb-4 line-clamp-2">
+                      {classItem.title}
+                    </h4>
 
-                {/* Time and Action */}
-                <div className="flex items-stretch sm:items-center justify-between gap-2 sm:gap-3">
-                  <div className="bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center justify-center gap-1 sm:gap-2">
-                    <FaClock className="text-gray-700 text-xs sm:text-sm" />
-                    <span className="text-gray-800 font-medium text-xs sm:text-sm">{classItem.time}</span>
-                  </div>
-                  <button className="bg-[#F68C29] text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-xs sm:text-sm md:text-base">
-                    Start Class
-                  </button>
-                </div>
+                    {/* Time and Action */}
+                    <div className="flex items-stretch sm:items-center justify-between gap-2 sm:gap-3">
+                      <div className="bg-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center justify-center gap-1 sm:gap-2">
+                        <FaClock className="text-gray-700 text-xs sm:text-sm" />
+                        <span className="text-gray-800 font-medium text-xs sm:text-sm">{classItem.time}</span>
+                      </div>
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-[#F68C29] text-white px-4 py-1.5 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-xs sm:text-sm md:text-base"
+                      >
+                        Start Class
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {activeTab === 'live' && (
+          <div className="mb-6">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Live Session</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              {/* Go Live Card */}
+                    <div className="relative bg-gradient-to-br from-[#3D08BA] via-[#7B2FBE] to-[#fd8310] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(61,8,186,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
+        {/* Animated background overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Decorative circles */}
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#fd8310]/20 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#3D08BA]/30 rounded-full blur-2xl"></div>
+        
+        <div className="relative flex flex-col items-center text-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
+            <FaVideo className="text-white text-2xl sm:text-3xl drop-shadow-lg" />
           </div>
+          <h4 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-md">Go Live Now</h4>
+          <p className="text-white text-opacity-95 mb-6 text-sm sm:text-base drop-shadow-sm">
+            Start an instant live session with your students
+          </p>
+          <button 
+            onClick={handleGoLive}
+            className="bg-white text-[#3D08BA] px-6 sm:px-8 py-3 rounded-lg font-bold hover:bg-opacity-95 hover:shadow-lg active:scale-95 transition-all duration-200 text-sm sm:text-base w-full sm:w-auto flex items-center justify-center gap-2 shadow-md"
+          >
+            <div className="w-3 h-3 bg-gradient-to-r from-[#3D08BA] to-[#fd8310] rounded-full animate-pulse shadow-sm"></div>
+            Go Live
+          </button>
         </div>
+        </div>
+              {/* Schedule Live Class Card */}
+              <div className="relative bg-gradient-to-br from-[#fd8310] via-[#B8559E] to-[#5a18f2] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(253,131,16,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
+  {/* Animated background overlay */}
+  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+  
+  {/* Decorative circles */}
+  <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#5a18f2]/20 rounded-full blur-2xl"></div>
+  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#fd8310]/30 rounded-full blur-2xl"></div>
+  
+  <div className="relative flex flex-col items-center text-center">
+    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
+      <FaCalendar className="text-white text-2xl sm:text-3xl drop-shadow-lg" />
+    </div>
+    <h4 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-md">Schedule Live Class</h4>
+    <p className="text-white text-opacity-95 mb-6 text-sm sm:text-base drop-shadow-sm">
+      Plan and schedule a live session for later
+    </p>
+    <button 
+      onClick={() => setShowScheduleModal(true)}
+      className="bg-white text-[#fd8310] px-6 sm:px-8 py-3 rounded-lg font-bold hover:bg-opacity-95 hover:shadow-lg active:scale-95 transition-all duration-200 text-sm sm:text-base w-full sm:w-auto flex items-center justify-center gap-2 shadow-md"
+    >
+      <FaPlus className="text-sm" />
+      Schedule Class
+    </button>
+  </div>
+</div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'group' && (
+          <div className="mb-6">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-4">Group Sessions</h3>
+            <div className="bg-white rounded-xl p-8 text-center shadow-sm">
+              <p className="text-gray-600">Group content will be displayed here</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Bottom Navigation */}

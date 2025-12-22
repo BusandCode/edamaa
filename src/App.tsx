@@ -5,6 +5,7 @@ import { IoTrendingUp } from 'react-icons/io5'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md'
 import NewLogo from './components/NewLogo'
+import { motion } from "framer-motion";
 
 
 const App = () => {
@@ -192,7 +193,12 @@ const App = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white border-2 border-[#3D08BA]/20 rounded-xl p-8 flex flex-col items-center gap-4 shadow-sm hover:shadow-xl hover:border-[#3D08BA] transition-all group">
               <div className="w-20 h-20 bg-[#3D08BA] rounded-full flex items-center justify-center group-hover:bg-[#F68C29] transition-colors">
                 <FaBookOpen className="text-white" size={32} />
@@ -232,12 +238,17 @@ const App = () => {
                 Learn from experienced educators and industry professionals
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-linear-to-br from-purple-50 to-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
+
+      className="py-20 bg-linear-to-br from-purple-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
@@ -252,7 +263,11 @@ const App = () => {
                 tutors who are committed to your success.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                  className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#3D08BA] rounded-lg flex items-center justify-center shrink-0">
                     <FaAward className="text-white" size={24} />
                   </div>
@@ -260,8 +275,13 @@ const App = () => {
                     <h3 className="font-semibold text-[#3D08BA] mb-2">Track Your Progress</h3>
                     <p className="text-gray-600 text-sm">Monitor achievements and stay motivated with detailed analytics and performance reports</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                  
+                className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#F68C29] rounded-lg flex items-center justify-center shrink-0">
                     <IoTrendingUp className="text-white" size={24} />
                   </div>
@@ -269,8 +289,12 @@ const App = () => {
                     <h3 className="font-semibold text-[#3D08BA] mb-2">Adaptive Learning</h3>
                     <p className="text-gray-600 text-sm">Content adjusts to your skill level and learning style for optimal results</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#3D08BA] rounded-lg flex items-center justify-center shrink-0">
                     <FaClock className="text-white" size={24} />
                   </div>
@@ -278,7 +302,7 @@ const App = () => {
                     <h3 className="font-semibold text-[#3D08BA] mb-2">Learn at Your Pace</h3>
                     <p className="text-gray-600 text-sm">Flexible scheduling that fits your busy lifestyle with 24/7 access</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
             <div className="relative">
@@ -302,7 +326,11 @@ const App = () => {
           </div>
 
           {/* Student Success Stories */}
-          <div className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
+          className="mt-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-semibold text-[#3D08BA] mb-4">What Our Students Say</h2>
               <p className="text-[14px] text-gray-600">Real stories from real students</p>
@@ -356,18 +384,23 @@ const App = () => {
                     AB
                   </div>
                   <div>
-                    <p className="font-bold text-[#3D08BA]">Ajayi Bukunmi</p>
-                    <p className="text-sm text-gray-600">UI/UX Designer</p>
+                    <p className="font-bold text-[#3D08BA]">Alaka Olakunle</p>
+                    <p className="text-sm text-gray-600">Lead UI/UX Designer</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
+
+      className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold text-[#3D08BA] text-center mb-4">
             Join Our Growing Community
@@ -426,7 +459,7 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Trending Courses */}
       <section className="py-20 bg-linear-to-br from-purple-50 to-white">
@@ -678,29 +711,32 @@ const App = () => {
           </div>
 
           {/* More Categories */}
-          <div className="mt-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
+          className="mt-20">
             <h3 className="text-[32px] font-semibold text-[#3D08BA] mb-8">Explore More Categories</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="flex gap-4">
               {[
                 { name: "Programming", icon: "💻", courses: 1200 },
                 { name: "Business", icon: "💼", courses: 850 },
                 { name: "Design", icon: "🎨", courses: 650 },
                 { name: "Marketing", icon: "📢", courses: 480 },
-                { name: "Photography", icon: "📸", courses: 320 },
-                { name: "Music", icon: "🎵", courses: 290 },
-                { name: "Writing", icon: "✍️", courses: 410 },
-                { name: "Languages", icon: "🌍", courses: 540 },
-                { name: "Health", icon: "🏥", courses: 270 },
-                { name: "Finance", icon: "💰", courses: 390 }
               ].map((category, idx) => (
-                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md hover:border-[#3D08BA]/30 transition-all cursor-pointer group">
+                <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, ease: "easeOut", delay: idx * 0.2 }}
+
+                key={idx} className="bg-white border border-gray-200 max-w-3xs rounded-xl p-6 hover:shadow-md hover:border-[#3D08BA]/30 transition-all cursor-pointer group">
                   <div className="text-3xl mb-3">{category.icon}</div>
                   <h4 className="font-semibold text-[#3D08BA] mb-1 group-hover:text-[#F68C29] transition-colors">{category.name}</h4>
                   <p className="text-sm text-gray-600">{category.courses} courses</p>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

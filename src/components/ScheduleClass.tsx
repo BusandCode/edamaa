@@ -199,7 +199,7 @@ const ScheduleClass = ({ isOpen, onClose, onSchedule }: ScheduleClassProps) => {
             <button
               type="button"
               onClick={handleSubmit}
-              className="flex-1 px-4 py-2 bg-[#3D08BA] text-white rounded-lg font-semibold hover:bg-[#2c0691] transition-colors"
+              className="flex-1 px-2 py-2 bg-[#3D08BA] text-white rounded-lg font-semibold hover:bg-[#2c0691] transition-colors"
             >
               Schedule Class
             </button>
