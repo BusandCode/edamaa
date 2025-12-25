@@ -9,7 +9,8 @@ import { motion } from "framer-motion";
 
 
 const App = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('All courses');
 
   const handleSignup = () => {
     window.location.href = '/signup'
@@ -28,12 +29,12 @@ const App = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center space-x-2 cursor-pointer">
-                <span className="text-gray-700 font-medium">Learning</span>
-                <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
+              {/* <div className="flex items-center space-x-2 cursor-pointer">
+                <select name="" id="" className='outline-0 w-22.5 rounded-md'>
+                  <option value="Learning">Learning</option>
+                  <option value="Explore">Explore</option>
+                </select>
+              </div> */}
               
               <div className="flex items-center bg-gray-100 rounded-lg px-4 py-2 w-96">
                 <FiSearch className="w-5 h-5 text-gray-500 mr-2" />
@@ -103,7 +104,12 @@ const App = () => {
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#3D08BA] rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#F68C29] rounded-full blur-3xl"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
+        <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-[#F68C29]/10 border border-[#F68C29]/30 rounded-full px-4 py-2 mb-6">
@@ -178,11 +184,15 @@ const App = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-white">
+      <motion.section 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-semibold text-[#3D08BA] mb-4">
@@ -233,14 +243,14 @@ const App = () => {
               <div className="w-20 h-20 bg-[#F68C29] rounded-full flex items-center justify-center group-hover:bg-[#3D08BA] transition-colors">
                 <FaGraduationCap className="text-white" size={32} />
               </div>
-              <h3 className="text-[#3D08BA] text-[14px] font-semibold text-center">Expert Teachers</h3>
+              <h3 className="text-[#3D08BA] text-[14px] font-semibold text-center">Expert Tutors</h3>
               <p className="text-gray-600 text-sm text-center">
                 Learn from experienced educators and industry professionals
               </p>
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Why Choose Us */}
       <motion.section 
@@ -305,7 +315,11 @@ const App = () => {
                 </motion.div>
               </div>
             </div>
-            <div className="relative">
+            <motion.div
+                  initial={{ opacity: 0, x: -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }} 
+            className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"
                 alt="Student studying"
@@ -322,7 +336,7 @@ const App = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Student Success Stories */}
@@ -474,33 +488,46 @@ const App = () => {
             </button>
           </div>
           
+          {/* Tabs */}
           <div className="flex space-x-8 mb-12 border-b border-gray-200 overflow-x-auto">
-            <button className="pb-4 border-b-4 border-[#3D08BA] font-semibold text-[#3D08BA] whitespace-nowrap">All Courses</button>
-            <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Technology</button>
-            <button className="pb-4 text-gray-600 hover:text-[#3D08BA] whitespace-nowrap">Sciences</button>
+            <button
+            onClick={() => setActiveTab('All Courses')}
+            className={`pb-4 whitespace-nowrap ${
+              activeTab === 'All Courses'
+                ? 'pb-4 border-b-4 border-[#3D08BA] font-semibold text-[#3D08BA] whitespace-nowrap'
+                : 'text-gray-600 hover:bg-gray-50'
+            }`}>All Courses</button>
+            <button 
+            onClick={() => setActiveTab('Technology')}
+            className={`pb-4 whitespace-nowrap ${
+              activeTab === 'Technology'
+                ? 'pb-4 border-b-4 border-[#3D08BA] font-semibold text-[#3D08BA] whitespace-nowrap'
+                : 'text-gray-600 hover:bg-gray-50'
+            }`}>Technology</button>
+            <button
+            onClick={() => setActiveTab('Science')}
+            className={`pb-4 whitespace-nowrap ${
+              activeTab === 'Science'
+                ? 'pb-4 border-b-4 border-[#3D08BA] font-semibold text-[#3D08BA] whitespace-nowrap'
+                : 'text-gray-600 hover:bg-gray-50'
+            }`}>Sciences</button>
           </div>
 
-          {/* Web Development Category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xl font-semibold text-[#3D08BA]">Web Development</h3>
-              <div className="h-px grow bg-gray-200"></div>
-              <button className="text-[#3D08BA] font-medium text-sm hover:text-[#F68C29] transition-colors">
-                See all →
-              </button>
-            </div>
-            
+          
+        {/* Conditional Content Based on Active Tab */}
+        {activeTab === 'All courses' && (
+          // All courses
+          <div className="mb-16">            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: "Complete Web Development Bootcamp", duration: "45h", students: "12,450", rating: "4.9", img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80", instructor: "John Doe", level: "Beginner" },
-                { title: "React JS - Complete Guide", duration: "32h", students: "8,920", rating: "4.8", img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&q=80", instructor: "Jane Smith", level: "Intermediate" },
+                // { title: "Complete Web Development Bootcamp", duration: "45h", students: "12,450", rating: "4.9", img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80", instructor: "John Doe", level: "Beginner" },
                 { title: "Node.js Backend Mastery", duration: "28h", students: "7,330", rating: "5.0", img: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&q=80", instructor: "Mike Johnson", level: "Advanced" },
                 { title: "Full Stack Web Development", duration: "52h", students: "10,780", rating: "4.9", img: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=400&q=80", instructor: "Sarah Williams", level: "Intermediate" }
               ].map((course, idx) => (
                 <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
                   <div className="relative overflow-hidden">
                     <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+                    <div className="absolute inset-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
                       <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
                     </div>
                     <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
@@ -536,123 +563,11 @@ const App = () => {
               ))}
             </div>
           </div>
+          
+        )}
 
-        
-          {/* Design & Creative Category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xl font-semibold text-[#3D08BA]">Design & Creative</h3>
-              <div className="h-px grow bg-gray-200"></div>
-              <button className="text-[#3D08BA] font-medium text-sm hover:text-[#F68C29] transition-colors">
-                See all →
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Graphic Design Fundamentals", duration: "24h", students: "14,450", rating: "4.9", img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&q=80", instructor: "Tom Harris", level: "Beginner" },
-                { title: "UI/UX Design Complete", duration: "38h", students: "12,920", rating: "5.0", img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=400&q=80", instructor: "Nina Garcia", level: "Intermediate" },
-                { title: "Adobe Photoshop Mastery", duration: "30h", students: "10,330", rating: "4.8", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&q=80", instructor: "Mark Taylor", level: "Advanced" },
-                { title: "Motion Graphics & Animation", duration: "42h", students: "8,780", rating: "4.7", img: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&q=80", instructor: "Rachel Adams", level: "Intermediate" }
-              ].map((course, idx) => (
-                <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
-                  <div className="relative overflow-hidden">
-                    <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                      <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
-                    </div>
-                    <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
-                      {course.level}
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">
-                      {course.duration}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-xs text-[#F68C29] font-medium">COURSE</div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#F68C29]">⭐</span>
-                        <span className="text-sm font-medium text-gray-700">{course.rating}</span>
-                      </div>
-                    </div>
-                    <h4 className="font-semibold text-[#3D08BA] mb-2 text-[14px] line-clamp-2">{course.title}</h4>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-6 h-6 bg-[#F68C29] rounded-full flex items-center justify-center text-white text-xs font-medium">
-                        {course.instructor.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <p className="text-xs text-gray-600">{course.instructor}</p>
-                    </div>
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                      <p className="text-xs text-gray-600">{course.students} students</p>
-                      <button className="text-[#3D08BA] font-medium text-xs hover:text-[#F68C29] transition-colors">
-                        Enroll →
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technology Category */}
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xl font-semibold text-[#3D08BA]">Technology</h3>
-              <div className="h-px grow bg-gray-200"></div>
-              <button className="text-[#3D08BA] font-medium text-sm hover:text-[#F68C29] transition-colors">
-                See all →
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Python Programming Pro", duration: "28h", students: "15,330", rating: "5.0", img: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400&q=80", instructor: "Mike Johnson", level: "Advanced" },
-                { title: "Machine Learning A-Z", duration: "44h", students: "11,240", rating: "4.9", img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80", instructor: "Dr. Sarah Lee", level: "Advanced" },
-                { title: "Data Science Bootcamp", duration: "50h", students: "13,890", rating: "4.8", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80", instructor: "Alex Rivera", level: "Intermediate" },
-                { title: "Cloud Computing AWS", duration: "36h", students: "9,650", rating: "4.9", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80", instructor: "Chris Wong", level: "Intermediate" }
-              ].map((course, idx) => (
-                <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
-                  <div className="relative overflow-hidden">
-                    <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                      <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
-                    </div>
-                    <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
-                      {course.level}
-                    </div>
-                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">
-                      {course.duration}
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-xs text-[#F68C29] font-medium">COURSE</div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[#F68C29]">⭐</span>
-                        <span className="text-sm font-medium text-gray-700">{course.rating}</span>
-                      </div>
-                    </div>
-                    <h4 className="font-semibold text-[#3D08BA] mb-2 text-[14px] line-clamp-2">{course.title}</h4>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-6 h-6 bg-[#F68C29] rounded-full flex items-center justify-center text-white text-xs font-medium">
-                        {course.instructor.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      <p className="text-xs text-gray-600">{course.instructor}</p>
-                    </div>
-                    <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                      <p className="text-xs text-gray-600">{course.students} students</p>
-                      <button className="text-[#3D08BA] font-medium text-xs hover:text-[#F68C29] transition-colors">
-                        Enroll →
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-
+          {/* Web Development Category */}
+          
           {/* Sciences Category */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
@@ -673,7 +588,7 @@ const App = () => {
                 <div key={idx} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-gray-100">
                   <div className="relative overflow-hidden">
                     <img src={course.img} alt={course.title} className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+                    <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
                       <FaPlay className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={40} />
                     </div>
                     <div className="absolute top-2 left-2 bg-white/90 text-[#3D08BA] text-xs px-2 py-1 rounded font-medium">
@@ -709,34 +624,6 @@ const App = () => {
               ))}
             </div>
           </div>
-
-          {/* More Categories */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
-          className="mt-20">
-            <h3 className="text-[32px] font-semibold text-[#3D08BA] mb-8">Explore More Categories</h3>
-            <div className="flex gap-4">
-              {[
-                { name: "Programming", icon: "💻", courses: 1200 },
-                { name: "Business", icon: "💼", courses: 850 },
-                { name: "Design", icon: "🎨", courses: 650 },
-                { name: "Marketing", icon: "📢", courses: 480 },
-              ].map((category, idx) => (
-                <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, ease: "easeOut", delay: idx * 0.2 }}
-
-                key={idx} className="bg-white border border-gray-200 max-w-3xs rounded-xl p-6 hover:shadow-md hover:border-[#3D08BA]/30 transition-all cursor-pointer group">
-                  <div className="text-3xl mb-3">{category.icon}</div>
-                  <h4 className="font-semibold text-[#3D08BA] mb-1 group-hover:text-[#F68C29] transition-colors">{category.name}</h4>
-                  <p className="text-sm text-gray-600">{category.courses} courses</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -788,20 +675,32 @@ const App = () => {
       </section>
 
       {/* Learning Benefits */}
-      <section className="py-20 bg-white">
+      <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 3, ease: "easeOut", delay: 0.1 }}
+        className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div
+          initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+           className="text-center mb-16">
             <h2 className="text-3xl font-semibold text-[#3D08BA] mb-4">
               Why Choose Edamaa3D?
             </h2>
             <p className="text-[14px] text-gray-600">
               More than just an online learning platform
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#3D08BA] to-[#2a0688] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">🎯</span>
                 </div>
@@ -809,9 +708,13 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Goal-Oriented Learning</h3>
                   <p className="text-gray-600 text-sm">Set clear objectives and track your progress with our intelligent learning management system. Stay motivated with milestone achievements and personalized recommendations.</p>
                 </div>
-              </div>
+              </motion.div >
 
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#F68C29] to-[#e57a1a] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">🤝</span>
                 </div>
@@ -819,9 +722,13 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Collaborative Environment</h3>
                   <p className="text-gray-600 text-sm">Connect with fellow learners, form study groups, and participate in discussions. Learning is better together with our vibrant community support.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#3D08BA] to-[#2a0688] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">📱</span>
                 </div>
@@ -829,11 +736,15 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Learn Anywhere, Anytime</h3>
                   <p className="text-gray-600 text-sm">Access courses on any device - desktop, tablet, or mobile. Download lessons for offline viewing and never miss a learning opportunity.</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="space-y-8">
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#F68C29] to-[#e57a1a] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">🏆</span>
                 </div>
@@ -841,9 +752,13 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Recognized Certificates</h3>
                   <p className="text-gray-600 text-sm">Earn industry-recognized certificates upon course completion. Showcase your achievements on LinkedIn and boost your career prospects.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#3D08BA] to-[#2a0688] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">💡</span>
                 </div>
@@ -851,9 +766,13 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Practical Projects</h3>
                   <p className="text-gray-600 text-sm">Apply your knowledge through hands-on projects and real-world case studies. Build a portfolio that demonstrates your skills to employers.</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex gap-6">
+              <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 0.1 }}
+              className="flex gap-6">
                 <div className="w-16 h-16 bg-linear-to-br from-[#F68C29] to-[#e57a1a] rounded-2xl flex items-center justify-center shrink-0">
                   <span className="text-3xl">👨‍🏫</span>
                 </div>
@@ -861,11 +780,11 @@ const App = () => {
                   <h3 className="text-[16px] font-semibold text-[#3D08BA] mb-2">Expert Support</h3>
                   <p className="text-gray-600 text-sm">Get help when you need it with 24/7 support from instructors and teaching assistants. Join live Q&A sessions and office hours.</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">
@@ -906,7 +825,7 @@ const App = () => {
                 <li><a href="#" className="text-gray-400 hover:text-[#F68C29] transition-colors">Courses</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-[#F68C29] transition-colors">Instructors</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-[#F68C29] transition-colors">Events</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-[#F68C29] transition-colors">Become an Instructor</a></li>
+                <li><a href="/signup" onClick={handleSignup} className="text-gray-400 hover:text-[#F68C29] transition-colors">Become an Instructor</a></li>
               </ul>
             </div>
 

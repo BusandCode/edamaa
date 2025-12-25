@@ -60,6 +60,9 @@ const TutorDashboard = () => {
   const handleStudentListClick = () => {
     navigate('/student-list');
   };
+  const handleCourseClick = () =>{
+    navigate('/courses')
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -142,7 +145,7 @@ const TutorDashboard = () => {
                     w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20
                     rounded-full
                     overflow-hidden
-                    border-2 sm:border-3 md:border-4 border-[#F68C29]
+                    border-2 border-[#f8f8f8]
                     bg-gray-200
                     flex items-center justify-center
                     focus:outline-none
@@ -233,7 +236,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaBook className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaBook className="text-white text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Courses</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">12</p>
@@ -243,7 +246,7 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaUserGraduate className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaUserGraduate className="text-white text-xs sm:text-sm md:text-base" />
               </div>
               <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Students</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">{students.length}</p>
@@ -253,9 +256,9 @@ const TutorDashboard = () => {
           <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#3D08BA] bg-opacity-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3">
-                <FaMoneyBillWave className="text-[#3D08BA] text-xs sm:text-sm md:text-base" />
+                <FaMoneyBillWave className="text-white text-xs sm:text-sm md:text-base" />
               </div>
-              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Earnings</h3>
+              <h3 className="text-[14px] md:text-sm text-gray-600 mb-1 text-center">Total Earnings</h3>
               <p className="text-sm sm:text-base md:text-lg font-bold text-gray-800">$45,280</p>
             </div>
           </div>
@@ -296,7 +299,6 @@ const TutorDashboard = () => {
         </div>
 
         {/* Conditional Content Based on Active Tab */}
-        {/* Conditional Content Based on Active Tab */}
         <AnimatePresence mode="wait">
           {activeTab === 'classroom' && (
             <motion.div 
@@ -321,7 +323,7 @@ const TutorDashboard = () => {
                     initial="hidden"
                     animate="visible"
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                    className="bg-gradient-to-r from-[#5a18f2] to-[#3D08BA] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
+                    className="bg-linear-to-r from-[#5a18f2] to-[#3D08BA] rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-shadow"
                   >
                     {/* Student Avatars and Date */}
                     <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -348,7 +350,7 @@ const TutorDashboard = () => {
                       </div>
                       <div className="bg-white bg-opacity-20 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg flex items-center gap-1 sm:gap-2">
                         <FaCalendar className="text-white text-[14px]" />
-                        <span className="text-white text-[12px] font-medium">{classItem.date}</span>
+                        <span className="text-gray-700 text-[12px] font-medium">{classItem.date}</span>
                       </div>
                     </div>
 
@@ -384,7 +386,7 @@ const TutorDashboard = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {/* Go Live Card */}
-                    <div className="relative bg-gradient-to-br from-[#3D08BA] via-[#7B2FBE] to-[#fd8310] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(61,8,186,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
+                    <div className="relative bg-linear-to-br from-[#3D08BA] via-[#7B2FBE] to-[#fd8310] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(61,8,186,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
         {/* Animated background overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
         
@@ -393,7 +395,7 @@ const TutorDashboard = () => {
         <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#3D08BA]/30 rounded-full blur-2xl"></div>
         
         <div className="relative flex flex-col items-center text-center">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-linear-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
             <FaVideo className="text-white text-2xl sm:text-3xl drop-shadow-lg" />
           </div>
           <h4 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-md">Go Live Now</h4>
@@ -404,13 +406,13 @@ const TutorDashboard = () => {
             onClick={handleGoLive}
             className="bg-white text-[#3D08BA] px-6 sm:px-8 py-3 rounded-lg font-bold hover:bg-opacity-95 hover:shadow-lg active:scale-95 transition-all duration-200 text-sm sm:text-base w-full sm:w-auto flex items-center justify-center gap-2 shadow-md"
           >
-            <div className="w-3 h-3 bg-gradient-to-r from-[#3D08BA] to-[#fd8310] rounded-full animate-pulse shadow-sm"></div>
+            <div className="w-3 h-3 bg-linear-to-r from-[#3D08BA] to-[#fd8310] rounded-full animate-pulse shadow-sm"></div>
             Go Live
           </button>
         </div>
         </div>
               {/* Schedule Live Class Card */}
-              <div className="relative bg-gradient-to-br from-[#fd8310] via-[#B8559E] to-[#5a18f2] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(253,131,16,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
+              <div className="relative bg-linear-to-br from-[#fd8310] via-[#B8559E] to-[#5a18f2] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(253,131,16,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
   {/* Animated background overlay */}
   <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
   
@@ -419,7 +421,7 @@ const TutorDashboard = () => {
   <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#fd8310]/30 rounded-full blur-2xl"></div>
   
   <div className="relative flex flex-col items-center text-center">
-    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
+    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-linear-to-br from-white/30 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 shadow-lg border border-white/20">
       <FaCalendar className="text-white text-2xl sm:text-3xl drop-shadow-lg" />
     </div>
     <h4 className="text-xl sm:text-2xl font-bold text-white mb-2 drop-shadow-md">Schedule Live Class</h4>
@@ -458,7 +460,7 @@ const TutorDashboard = () => {
             </div>
             <span className="text-[14px]">Home</span>
           </button>
-          <button className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
+          <button onClick={handleCourseClick} className="flex flex-col items-center gap-0.5 sm:gap-1 text-gray-600 hover:text-orange-500">
             <div className="p-2 sm:p-2.5 rounded-lg hover:bg-orange-100">
               <FaBook size={16} className="sm:w-5 sm:h-5" />
             </div>

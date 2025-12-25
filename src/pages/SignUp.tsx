@@ -40,19 +40,19 @@ const SignUp: React.FC = () => {
           <div className='flex flex-col gap-3 sm:gap-4 w-full max-w-70 sm:max-w-[320px] mb-5 sm:mb-6'>
             <button 
               onClick={() => handleNavigate('/student-registration')}
-              className='bg-[#3D08BA] rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2'
+              className='bg-[#3D08BA] cursor-pointer rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2'
             >
               Join as a Student
             </button>
             <button 
               onClick={() => handleNavigate('/tutor-registration')}
-              className='bg-[#3D08BA] rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all text-center flex items-center justify-center shadow-lg hover:shadow-xl'
+              className='bg-[#3D08BA] cursor-pointer rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all text-center flex items-center justify-center shadow-lg hover:shadow-xl'
             >
               Register as a Tutor
             </button>
             <button 
               onClick={() => handleNavigate('/school-registration')}
-              className='bg-[#3D08BA] rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all text-center flex items-center justify-center shadow-lg hover:shadow-xl'
+              className='bg-[#3D08BA] cursor-pointer rounded-lg sm:rounded-xl w-full h-12 sm:h-14 text-white text-sm sm:text-base font-medium hover:bg-[#2F0695] active:scale-98 transition-all text-center flex items-center justify-center shadow-lg hover:shadow-xl'
             >
               Enroll Your School
             </button>
