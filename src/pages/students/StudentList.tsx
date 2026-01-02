@@ -5,7 +5,7 @@ import {
   FaCommentDots,
   FaTimes,
   FaUserGraduate,
-  FaSlidersH,
+  // FaSlidersH,
   FaPen
 } from 'react-icons/fa';
 

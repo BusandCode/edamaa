@@ -150,6 +150,37 @@ const StudentDashboard = () => {
         </div>
 
         <RecordClasses />
+
+        {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setMenuOpen(false)}
+        >
+          <div
+            className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-lg font-bold mb-4">Menu</h3>
+
+            <nav className="space-y-4">
+              <button className="block text-gray-700 hover:text-[#3D08BA]">
+                Profile
+              </button>
+              <button className="block text-gray-700 hover:text-[#3D08BA]">
+                Settings
+              </button>
+              <button className="block text-gray-700 hover:text-[#3D08BA]">
+                Help & Support
+              </button>
+              <button className="block text-red-600">
+                Logout
+              </button>
+            </nav>
+          </div>
+        </div>
+      )}
+
       </div>
 
       {/* PROFILE MODAL */}
