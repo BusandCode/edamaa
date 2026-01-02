@@ -113,13 +113,13 @@ const StudentDashboard = () => {
       <div className={`max-w-7xl mx-auto px-4 py-4 ${showProfile ? 'blur-sm' : ''}`}>
 
         {/* Earnings */}
-        <div className="bg-gradient-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white mb-6">
+        <div className="bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white mb-6">
           <div className="flex justify-between mb-3">
             <h3 className="font-semibold">Earnings Overview</h3>
             <span>30%</span>
           </div>
           <div className="h-3 bg-white/20 rounded-full overflow-hidden mb-4">
-            <div className="h-full w-[30%] bg-gradient-to-r from-[#F68C29] to-[#FF9F4D]" />
+            <div className="h-full w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D]" />
           </div>
           <SubscriptionStatus isActive showBoth />
         </div>
@@ -136,7 +136,7 @@ const StudentDashboard = () => {
             { label: 'Payment & Subscriptions', icon: CreditCardIcon, color: 'from-yellow-500 to-yellow-700' },
           ].map(({ label, icon: Icon, color, live }) => (
             <button key={label} className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col items-center gap-2">
-              <div className={`w-14 h-14 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center relative`}>
+              <div className={`w-14 h-14 bg-linear-to-br ${color} rounded-2xl flex items-center justify-center relative`}>
                 <Icon className="w-7 h-7 text-white stroke-[1.5]" />
                 {live && (
                   <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] px-2 rounded-full font-bold">
