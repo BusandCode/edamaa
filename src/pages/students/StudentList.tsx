@@ -1,36 +1,105 @@
-import { students } from './students'
+import { students } from './students';
+import {
+  FaSearch,
+  FaPhone,
+  FaCommentDots,
+  FaTimes,
+  FaUserGraduate,
+  FaSlidersH,
+  FaPen
+} from 'react-icons/fa';
+
 const StudentList = () => {
   return (
-    <div className="min-h-screen bg-white py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-[20px] font-bold text-[#3d08ba] mb-2">Student Directory</h1>
-          <p className="text-gray-600">Total Students: {students.length}</p>
+    <div className="min-h-screen bg-white px-4 py-6">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-xl font-semibold">Students Lists</h1>
+          <button className="text-sm bg-black text-white px-4 py-1 rounded-full">
+            Back
+          </button>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {/* Search */}
+        <div className="relative mb-5">
+          <input
+            type="text"
+            placeholder="Search Tutors name or ID"
+            className="w-full border rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none"
+          />
+          <FaSearch className="absolute left-4 top-3 text-gray-400" />
+        </div>
+
+        {/* Filters */}
+        <div className="flex flex-wrap items-center justify-between mb-4 gap-3">
+          <div className="flex items-center gap-2">
+            <FaUserGraduate />
+            <span className="font-semibold">{students.length}</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <select className="border rounded-full px-4 py-1 text-sm">
+              <option>Class</option>
+            </select>
+
+            <select className="border rounded-full px-4 py-1 text-sm">
+              <option>Name</option>
+            </select>
+
+            <button className="border rounded-full p-2">
+              <FaPen size={12} />
+            </button>
+          </div>
+        </div>
+
+        {/* Table Header */}
+        <div className="hidden md:grid grid-cols-7 text-xs font-semibold text-gray-500 px-4 mb-2">
+          <span>S/N</span>
+          <span>Name</span>
+          <span>Class</span>
+          <span>Dept</span>
+          <span>Phone NO</span>
+          <span>Assigned Tutor</span>
+          <span>Actions</span>
+        </div>
+
+        {/* Rows */}
+        <div className="space-y-3">
           {students.map((student, index) => (
-            <div 
+            <div
               key={student.id}
-              className="group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-3 border border-gray-100 hover:border-indigo-300 hover:-translate-y-1"
-              style={{
-                animationDelay: `${index * 50}ms`
-              }}
+              className="grid grid-cols-2 md:grid-cols-7 items-center bg-pink-50 rounded-lg px-4 py-3 text-sm"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-6 h-6 rounded-full bg-[#3d08ba] flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-110 transition-transform">
-                  {student.name.charAt(0)}
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">
-                    {student.name}
-                  </h3>
-                </div>
+              <span>{index + 1}.</span>
+
+              <div className="flex items-center gap-2">
+                <img
+                  src={student.avatar}
+                  alt=""
+                  className="w-6 h-6 rounded-full"
+                />
+                <span>{student.name}</span>
               </div>
-              
-              <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              <span>{student.class}</span>
+              <span>{student.dept}</span>
+              <span>{student.phone}</span>
+              <span>{student.tutor}</span>
+
+              <div className="flex items-center gap-3">
+                <FaPhone className="cursor-pointer" />
+                <FaCommentDots className="cursor-pointer" />
+                <FaTimes className="cursor-pointer" />
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* View More */}
+        <div className="text-center mt-6 text-sm font-medium cursor-pointer">
+          View More
         </div>
       </div>
     </div>
