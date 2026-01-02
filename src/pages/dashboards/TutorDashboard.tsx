@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScheduleClass, { type NewClassData } from '../../components/ScheduleClass';
 import { motion, AnimatePresence } from 'framer-motion';
+import TutorProfile from '../profiles/TutorProfile';
 
 const TutorDashboard = () => {
   const [activeTab, setActiveTab] = useState('classroom');
@@ -14,9 +15,30 @@ const TutorDashboard = () => {
   const [showScheduleModal, setShowScheduleModal] = useState(false);
 
   // Profile image and editable name
-  const [profileSrc] = useState(null);
-  const [name] = useState('Abdulrahman Farhan');
+  const [profileSrc, setProfileSrc] = useState<string | null>(null);
+  const [name, setName] = useState('Abdulrahman Farhan');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [description, setDescription] = useState('Enter your bio here...');
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+
+
+   const handleProfileUpdate = (updatedProfile: { 
+    name: string;
+    username?: string;
+    email: string;
+    bio: string; 
+    subjects?: string;
+    experience?: string;
+    profileImage: string | null;
+  }) => {
+    setName(updatedProfile.name);
+    if (typeof updatedProfile.username !== 'undefined') setUsername(updatedProfile.username);
+    setEmail(updatedProfile.email);
+    setDescription(updatedProfile.bio);
+    setProfileSrc(updatedProfile.profileImage);
+  };
+
 
   const [upcomingClasses, setUpcomingClasses] = useState([
     {
@@ -212,6 +234,7 @@ const TutorDashboard = () => {
                 <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 truncate leading-tight mt-0.5">
                   {name}
                 </h2>
+                <p className='text-[12px] text-gray-600'>{description}</p>
               </div>
             </div>
 
@@ -388,7 +411,7 @@ const TutorDashboard = () => {
               {/* Go Live Card */}
                     <div className="relative bg-linear-to-br from-[#3D08BA] via-[#7B2FBE] to-[#fd8310] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(61,8,186,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
         {/* Animated background overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
         
         {/* Decorative circles */}
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#fd8310]/20 rounded-full blur-2xl"></div>
@@ -414,7 +437,7 @@ const TutorDashboard = () => {
               {/* Schedule Live Class Card */}
               <div className="relative bg-linear-to-br from-[#fd8310] via-[#B8559E] to-[#5a18f2] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(253,131,16,0.6)] transition-all duration-300 transform hover:scale-105 overflow-hidden">
   {/* Animated background overlay */}
-  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+  <div className="absolute inset-0 bg-linear-to-tr from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
   
   {/* Decorative circles */}
   <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#5a18f2]/20 rounded-full blur-2xl"></div>
@@ -499,6 +522,27 @@ const TutorDashboard = () => {
         draggable 
         pauseOnHover 
       />
+
+{/* Tutor Profile Modal */}
+      {showProfile && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={() => setShowProfile(false)}
+          ></div>
+          <div className="relative z-10 w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+            <TutorProfile 
+              onClose={() => setShowProfile(false)}
+              onSave={handleProfileUpdate}
+              initialName={name}
+              initialUsername={username}
+              initialEmail={email}
+              initialBio={description}
+              initialProfileImage={profileSrc}
+            />
+          </div>
+        </div>
+      )}
 
     </div>
   );
