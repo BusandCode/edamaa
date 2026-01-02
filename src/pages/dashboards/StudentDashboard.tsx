@@ -1,27 +1,40 @@
 import { useState } from 'react';
 import NewLogo from '../../components/NewLogo';
-import { FaBars, FaBell, FaBook, FaTasks, FaVideo, FaChartLine, FaFileAlt, FaDollarSign, FaPlus } from 'react-icons/fa';
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 import RecordClasses from "../../components/RecordClasses";
 import StudentProfile from "../profiles/StudentProfile";
-import { FaSearch } from 'react-icons/fa';
+
+import {
+  Bars3Icon,
+  BellIcon,
+  BookOpenIcon,
+  ClipboardDocumentListIcon,
+  VideoCameraIcon,
+  ChartBarIcon,
+  DocumentTextIcon,
+  CreditCardIcon,
+  PlusIcon,
+  MagnifyingGlassIcon,
+  UserCircleIcon
+} from '@heroicons/react/24/outline';
 
 const StudentDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [profileSrc, setProfileSrc] = useState<string | null>(null);
-  // const profileInputRef = useRef<HTMLInputElement | null>(null);
-  const [name, setName] = useState<string>('Andrew');
-  const [username, setUsername] = useState<string>('andrew123');
-  const [email, setEmail] = useState<string>('andrew@example.com');
-  const [description, setDescription] = useState<string>('I am here to learn, unlearn and relearn');
 
-  // Function to handle profile updates from StudentProfile component
-  const handleProfileUpdate = (updatedProfile: { 
+  const [name, setName] = useState('Andrew');
+  const [username, setUsername] = useState('andrew123');
+  const [email, setEmail] = useState('andrew@example.com');
+  const [description, setDescription] = useState(
+    'I am here to learn, unlearn and relearn'
+  );
+
+  const handleProfileUpdate = (updatedProfile: {
     name: string;
     username: string;
     email: string;
-    bio: string; 
+    bio: string;
     profileImage: string | null;
   }) => {
     setName(updatedProfile.name);
@@ -33,241 +46,118 @@ const StudentDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
+
+      {/* HEADER */}
       <div className={`bg-white shadow-sm sticky top-0 z-10 ${showProfile ? 'blur-sm' : ''}`}>
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
-          {/* Logo, Search and Menu on same line */}
-          <div className="flex items-center justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
-            {/* Logo */}
-            <div className='shrink-0'>
-              <NewLogo logoWidth={30} logoHeight={30} textSize="text-[14px]" gap="gap-1.5" centered={false} />
+        <div className="max-w-7xl mx-auto px-4 py-4">
+
+          {/* Top Row */}
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <NewLogo logoWidth={30} logoHeight={30} textSize="text-sm" gap="gap-1.5" centered={false} />
+
+            {/* Search */}
+            <div className="flex-1 max-w-md relative">
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                placeholder="Search course, tutorial..."
+                className="w-full pl-10 pr-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-[#3D08BA]"
+              />
             </div>
 
-            {/* Search Bar */}
-            <div className="flex-1 min-w-0 max-w-md">
+            <button onClick={() => setMenuOpen(true)} className="p-2 rounded-lg hover:bg-gray-100">
+              <Bars3Icon className="w-6 h-6 text-gray-700" />
+            </button>
+          </div>
+
+          {/* Welcome */}
+          <div className="flex items-center justify-between">
+
+            {/* Profile */}
+            <div className="flex items-center gap-3">
               <div className="relative">
-                <FaSearch className="absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={12} />
-                <input
-                  type="text"
-                  placeholder="Search course, tutorial..."
-                  className="w-full pl-8 sm:pl-10 pr-3 sm:pr-4 py-1.5 sm:py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#3D08BA] text-xs sm:text-sm"
-                />
-              </div>
-            </div>
-
-            {/* Menu Button */}
-            <button 
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-lg shrink-0"
-            >
-              <FaBars className="text-gray-700 text-base sm:text-xl" />
-            </button>
-          </div>
-
-          {/* Welcome Section */}
-          <div className="flex items-center justify-between gap-2">
-            {/* Profile Avatar + Info */}
-            <div className="flex items-center gap-3 min-w-0 flex-1">
-          {/* Profile Avatar */}
-          <div className="relative shrink-0 group">
-            {/* Avatar Button */}
-            <button
-              type="button"
-              aria-label="View profile"
-              title="View profile"
-              onClick={() => setShowProfile(true)}
-              className="
-                relative
-                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-                rounded-full
-                overflow-hidden
-                border-2 sm:border-3 md:border-4 border-[#F68C29]
-                bg-gray-200
-                flex items-center justify-center
-                focus:outline-none
-                focus:ring-2 focus:ring-[#3D08BA]
-                transition
-              "
-            >
-              {/* Show image if uploaded, else SVG avatar */}
-              {profileSrc ? (
-                <img
-                  src={profileSrc}
-                  alt="Profile picture"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <svg
-                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={() => setShowProfile(true)}
+                  className="w-12 h-12 rounded-full border-2 border-[#F68C29] overflow-hidden bg-gray-100 flex items-center justify-center"
                 >
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
-              )}
+                  {profileSrc ? (
+                    <img src={profileSrc} className="w-full h-full object-cover" />
+                  ) : (
+                    <UserCircleIcon className="w-10 h-10 text-gray-400" />
+                  )}
+                </button>
 
-              {/* Hover Overlay */}
-              <div
-                className="
-                  absolute inset-0
-                  bg-black/40
-                  hidden sm:flex
-                  items-center justify-center
-                  text-white text-[9px] md:text-[10px] font-medium
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity
-                "
-              >
-                View Profile
+                <button
+                  onClick={() => setShowProfile(true)}
+                  className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#3D08BA] rounded-full flex items-center justify-center"
+                >
+                  <PlusIcon className="w-4 h-4 text-white" />
+                </button>
               </div>
-            </button>
 
-            {/* Plus Button */}
-            <button
-              type="button"
-              onClick={() => setShowProfile(true)}
-              aria-label="Open profile"
-              title="Open profile"
-              className="
-                absolute -bottom-1 -right-1
-                w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7
-                rounded-full
-                bg-[#3D08BA]
-                flex items-center justify-center
-                shadow-md
-                hover:bg-[#2c0691]
-                transition
-              "
-            >
-              <FaPlus className="text-white text-[10px] sm:text-xs md:text-sm" />
-            </button>
-          </div>
-
-  {/* Welcome + Name */}
-  <div className="min-w-0 flex-1">
-    <h2 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-800 truncate leading-tight">
-      Welcome, {name}
-    </h2>
-
-    <p className="text-[10px] sm:text-xs md:text-sm text-gray-600 truncate leading-tight mt-0.5">
-      {description}
-    </p>
-  </div>
-</div>
-
-            <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
-              {/* Notification Bell */}
-              <button className="relative p-1 sm:p-1.5 md:p-2 hover:bg-gray-100 rounded-full">
-                <FaBell className="text-[#3D08BA] text-base sm:text-lg md:text-xl lg:text-2xl" />
-                <span className="absolute top-0 right-0 sm:top-0.5 sm:right-0.5 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full"></span>
-              </button>
+              <div>
+                <h2 className="font-bold text-gray-800">Welcome, {name}</h2>
+                <p className="text-xs text-gray-600">{description}</p>
+              </div>
             </div>
+
+            {/* Bell */}
+            <button className="relative p-2 rounded-full hover:bg-gray-100">
+              <BellIcon className="w-6 h-6 text-[#3D08BA]" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className={`max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 ${showProfile ? 'blur-sm' : ''}`}>
-        {/* Earnings Overview Card */}
-        <div className='bg-linear-to-r from-[#3D08BA] to-[#5010E0] rounded-xl sm:rounded-2xl p-4 sm:p-5 text-white mb-4 sm:mb-6'>
-          <div className='flex items-center justify-between mb-3 sm:mb-4'>
-            <h3 className='text-sm sm:text-base md:text-lg font-semibold'>Earnings Overview</h3>
-            <span className='text-xs sm:text-sm font-medium'>30%</span>
+      {/* MAIN */}
+      <div className={`max-w-7xl mx-auto px-4 py-4 ${showProfile ? 'blur-sm' : ''}`}>
+
+        {/* Earnings */}
+        <div className="bg-gradient-to-r from-[#3D08BA] to-[#5010E0] rounded-2xl p-5 text-white mb-6">
+          <div className="flex justify-between mb-3">
+            <h3 className="font-semibold">Earnings Overview</h3>
+            <span>30%</span>
           </div>
-          <div className='relative h-2 sm:h-3 bg-white/20 rounded-full overflow-hidden mb-4 sm:mb-5'>
-            <div className='absolute inset-y-0 left-0 w-[30%] bg-linear-to-r from-[#F68C29] to-[#FF9F4D] rounded-full'></div>
+          <div className="h-3 bg-white/20 rounded-full overflow-hidden mb-4">
+            <div className="h-full w-[30%] bg-gradient-to-r from-[#F68C29] to-[#FF9F4D]" />
           </div>
-          
-          {/* Subscription Status */}
-          <SubscriptionStatus isActive={true} showBoth={true} />
+          <SubscriptionStatus isActive showBoth />
         </div>
 
-        {/* Quick Access Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
-          {/* My Subjects */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-blue-500 to-blue-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <FaBook className="text-white text-lg sm:text-xl md:text-2xl" />
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">My Subjects</span>
-          </button>
+        {/* Quick Access */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
 
-          {/* Assignments */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-green-500 to-green-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <FaTasks className="text-white text-lg sm:text-xl md:text-2xl" />
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Assignments</span>
-          </button>
-
-          {/* Join Class */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-red-500 to-red-700 rounded-xl sm:rounded-2xl flex items-center justify-center relative">
-              <FaVideo className="text-white text-lg sm:text-xl md:text-2xl" />
-              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[8px] sm:text-xs px-1 sm:px-2 py-0.5 rounded-full font-bold">LIVE</span>
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Join Class</span>
-          </button>
-
-          {/* Performance Report */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-purple-500 to-purple-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <FaChartLine className="text-white text-lg sm:text-xl md:text-2xl" />
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Performance Report</span>
-          </button>
-
-          {/* Resource Library */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-orange-500 to-orange-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <FaFileAlt className="text-white text-lg sm:text-xl md:text-2xl" />
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Resource Library</span>
-          </button>
-
-          {/* Payment & Subscriptions */}
-          <button className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-2 sm:gap-3">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-linear-to-br from-yellow-500 to-yellow-700 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <FaDollarSign className="text-white text-lg sm:text-xl md:text-2xl" />
-            </div>
-            <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-800 text-center leading-tight">Payment & Subscriptions</span>
-          </button>
+          {[
+            { label: 'My Subjects', icon: BookOpenIcon, color: 'from-blue-500 to-blue-700' },
+            { label: 'Assignments', icon: ClipboardDocumentListIcon, color: 'from-green-500 to-green-700' },
+            { label: 'Join Class', icon: VideoCameraIcon, color: 'from-red-500 to-red-700', live: true },
+            { label: 'Performance Report', icon: ChartBarIcon, color: 'from-purple-500 to-purple-700' },
+            { label: 'Resource Library', icon: DocumentTextIcon, color: 'from-orange-500 to-orange-700' },
+            { label: 'Payment & Subscriptions', icon: CreditCardIcon, color: 'from-yellow-500 to-yellow-700' },
+          ].map(({ label, icon: Icon, color, live }) => (
+            <button key={label} className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col items-center gap-2">
+              <div className={`w-14 h-14 bg-gradient-to-br ${color} rounded-2xl flex items-center justify-center relative`}>
+                <Icon className="w-7 h-7 text-white stroke-[1.5]" />
+                {live && (
+                  <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] px-2 rounded-full font-bold">
+                    LIVE
+                  </span>
+                )}
+              </div>
+              <span className="text-sm font-semibold text-gray-800 text-center">{label}</span>
+            </button>
+          ))}
         </div>
 
-        {/* Recorded Class Section - Now using RecordClasses Component */}
         <RecordClasses />
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {menuOpen && (
-        <div 
-          className={`fixed inset-0 bg-black bg-opacity-50 z-20 ${showProfile ? 'blur-sm' : ''}`}
-          onClick={() => setMenuOpen(false)}
-        >
-          <div 
-            className="absolute right-0 top-0 h-full w-56 sm:w-64 bg-white shadow-lg p-4 sm:p-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Menu</h3>
-            <nav className="space-y-3 sm:space-y-4">
-              <a href="#" className="block text-sm sm:text-base text-gray-700 hover:text-[#3D08BA]">Profile</a>
-              <a href="#" className="block text-sm sm:text-base text-gray-700 hover:text-[#3D08BA]">Settings</a>
-              <a href="#" className="block text-sm sm:text-base text-gray-700 hover:text-[#3D08BA]">Help & Support</a>
-              <a href="#" className="block text-sm sm:text-base text-gray-700 hover:text-[#3D08BA]">Logout</a>
-            </nav>
-          </div>
-        </div>
-      )}
-
-      {/* Student Profile Modal */}
+      {/* PROFILE MODAL */}
       {showProfile && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
-          <div 
-            className="absolute inset-0 bg-black bg-opacity-50"
-            onClick={() => setShowProfile(false)}
-          ></div>
-          <div className="relative z-10 w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
-            <StudentProfile 
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowProfile(false)} />
+          <div className="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            <StudentProfile
               onClose={() => setShowProfile(false)}
               onSave={handleProfileUpdate}
               initialName={name}
