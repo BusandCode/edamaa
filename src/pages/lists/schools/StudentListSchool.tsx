@@ -29,25 +29,12 @@ const StudentList = () => {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 pb-24">
       {/* Header */}
-      <div className="bg-[#3D08BA] text-white px-4 py-6 shadow-lg">
+      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-2xl font-bold">Student Directory</h1>
-              <p className="text-purple-200 text-sm mt-1">Manage and track all students</p>
-            </div>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-3 mt-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="flex items-center gap-2">
-                <FaUserGraduate className="text-xl" />
-                <div>
-                  <p className="text-xs text-purple-200">Total</p>
-                  <p className="text-lg font-bold">{students.length}</p>
-                </div>
-              </div>
+              <h1 className="text-2xl font-bold text-[#3D08BA]">Student Directory</h1>
+              <p className="text-gray-600 text-sm mt-1">Manage and track all students</p>
             </div>
           </div>
         </div>
