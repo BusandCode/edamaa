@@ -2,7 +2,9 @@ import { useState } from 'react';
 import NewLogo from '../../components/NewLogo';
 import SubscriptionStatus from "../../components/SubscriptionStatus";
 import RecordClasses from "../../components/RecordClasses";
+import { useNavigate } from 'react-router-dom';
 import StudentProfile from "../profiles/StudentProfile";
+
 
 import {
   Bars3Icon,
@@ -19,6 +21,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 const StudentDashboard = () => {
+  const navigate = useNavigate(); // Move this to the top level
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [profileSrc, setProfileSrc] = useState<string | null>(null);
@@ -43,6 +46,10 @@ const StudentDashboard = () => {
     setDescription(updatedProfile.bio);
     setProfileSrc(updatedProfile.profileImage);
   };
+
+  const OnSubjectClick = () => {
+    navigate('/mysubjects');
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
@@ -128,14 +135,18 @@ const StudentDashboard = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
 
           {[
-            { label: 'My Subjects', icon: BookOpenIcon, color: 'from-blue-500 to-blue-700' },
+           { label: 'My Subjects', icon: BookOpenIcon, color: 'from-blue-500 to-blue-700', onClick: OnSubjectClick },
             { label: 'Assignments', icon: ClipboardDocumentListIcon, color: 'from-green-500 to-green-700' },
             { label: 'Join Class', icon: VideoCameraIcon, color: 'from-red-500 to-red-700', live: true },
             { label: 'Performance Report', icon: ChartBarIcon, color: 'from-purple-500 to-purple-700' },
             { label: 'Resource Library', icon: DocumentTextIcon, color: 'from-orange-500 to-orange-700' },
             { label: 'Payment & Subscriptions', icon: CreditCardIcon, color: 'from-yellow-500 to-yellow-700' },
-          ].map(({ label, icon: Icon, color, live }) => (
-            <button key={label} className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col items-center gap-2">
+          ].map(({ label, icon: Icon, color, live, onClick }) => (
+            <button 
+              key={label} 
+              onClick={onClick}
+              className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col items-center gap-2"
+            >
               <div className={`w-14 h-14 bg-linear-to-br ${color} rounded-2xl flex items-center justify-center relative`}>
                 <Icon className="w-7 h-7 text-white stroke-[1.5]" />
                 {live && (

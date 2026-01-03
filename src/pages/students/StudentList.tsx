@@ -8,8 +8,15 @@ import {
   // FaSlidersH,
   FaPen
 } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const StudentList = () => {
+
+  const handleBackClick = () => {
+    const navigate = useNavigate();
+    navigate(-1);
+  };
+  
   return (
     <div className="min-h-screen bg-white px-4 py-6">
       <div className="max-w-6xl mx-auto">
@@ -17,7 +24,7 @@ const StudentList = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl font-semibold">Students Lists</h1>
-          <button className="text-sm bg-black text-white px-4 py-1 rounded-full">
+          <button onClick={handleBackClick} className="text-sm bg-black text-white px-4 py-1 rounded-full">
             Back
           </button>
         </div>
