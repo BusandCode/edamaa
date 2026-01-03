@@ -1,4 +1,3 @@
-// students.js
 export const students = [
   {
     id: 1,
@@ -7,7 +6,8 @@ export const students = [
     dept: 'Science',
     phone: '09056473421',
     tutor: 'Mr. Joseph',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Setiu'
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Setiu',
+    status: 'Active'
   },
   {
     id: 2,
@@ -16,6 +16,7 @@ export const students = [
     dept: 'Science',
     phone: '09056473421',
     tutor: 'Mr. Joseph',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Taiwo'
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Taiwo',
+    status: 'Active'
   }
 ];
