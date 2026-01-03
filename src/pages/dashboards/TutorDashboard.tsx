@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaSearch, FaBell, FaCog, FaBook, FaUserGraduate, FaMoneyBillWave, FaHome, FaClock, FaCalendar, FaCopy, FaVideo, FaPlus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import NewLogo from '../../components/NewLogo';
-import { students } from '../students/students';
+import { students } from '../lists/tutors/students';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScheduleClass, { type NewClassData } from '../../components/ScheduleClass';

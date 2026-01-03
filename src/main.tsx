@@ -19,7 +19,8 @@ import StudentDashboard from './pages/dashboards/StudentDashboard.tsx'
 import StudentProfile from './pages/profiles/StudentProfile.tsx'
 
 //Import students
-import StudentList from './pages/students/StudentList.tsx'
+import StudentListTutor from './pages/lists/tutors/StudentListTutor.tsx'
+import StudentListSchool from './pages/lists/schools/StudentListSchool.tsx'
 
 //Import courses
 import CoursesList from './pages/courses/CoursesList.tsx'
@@ -53,7 +54,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/my-profile' element={<StudentProfile />} />
 
         {/* Students Route */}
-        <Route path='/student-list' element={<StudentList />} />
+        <Route path='/student-list-tutor' element={<StudentListTutor />} />
+        <Route path='/student-list-school' element={<StudentListSchool />} />
 
         {/* Courses */}
         <Route path='/courses' element={<CoursesList />} />
