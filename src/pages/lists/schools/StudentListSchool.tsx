@@ -24,10 +24,10 @@ const StudentList = () => {
     return matchesSearch && matchesClass && matchesDept;
   });
 
-  const activeStudents = students.filter(s => s.status === 'Active').length;
+  // const activeStudents = students.filter(s => s.status === 'Active').length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pb-24">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 pb-24">
       {/* Header */}
       <div className="bg-[#3D08BA] text-white px-4 py-6 shadow-lg">
         <div className="max-w-6xl mx-auto">
@@ -36,9 +36,6 @@ const StudentList = () => {
               <h1 className="text-2xl font-bold">Student Directory</h1>
               <p className="text-purple-200 text-sm mt-1">Manage and track all students</p>
             </div>
-            <button className="bg-white text-[#3D08BA] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors">
-              + Add Student
-            </button>
           </div>
 
           {/* Stats Cards */}
@@ -49,24 +46,6 @@ const StudentList = () => {
                 <div>
                   <p className="text-xs text-purple-200">Total</p>
                   <p className="text-lg font-bold">{students.length}</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <div>
-                  <p className="text-xs text-purple-200">Active</p>
-                  <p className="text-lg font-bold">{activeStudents}</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                <div>
-                  <p className="text-xs text-purple-200">Inactive</p>
-                  <p className="text-lg font-bold">{students.length - activeStudents}</p>
                 </div>
               </div>
             </div>
@@ -206,7 +185,7 @@ const StudentList = () => {
 
         {/* Mobile Card View */}
         <div className="md:hidden space-y-3">
-          {filteredStudents.map((student, index) => (
+          {filteredStudents.map((student) => (
             <div key={student.id} className="bg-white rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3 mb-3">
                 <img
